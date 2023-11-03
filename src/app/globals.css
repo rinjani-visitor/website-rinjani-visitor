@@ -2,26 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('/bgbody.jpg');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+main {
+  flex: 1;
+}
+
+@layer components {
+  .active_navigation_bar {
+    @apply font-bold
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+#image-login {
+  background-image: url('/assets/airterjun.webp');
+}
+
+#image-register {
+  background-image: url('/assets/tenun.webp');
+}
+
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, green 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, green);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: s3 0.5s infinite linear;
+}
+
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+.underline {
+  height: 2px;
+  background-color: transparent;
+  width: 50%;
+  transition: width 0.2s, background-color 0.5s;
+  margin: 0 auto;
+  -webkit-transition: width 0.2s, background-color 0.5s;
+  -moz-transition: width 0.2s, background-color 0.5s;
+  -ms-transition: width 0.2s, background-color 0.5s;
+  -o-transition: width 0.2s, background-color 0.5s;
+  -webkit-transition: width 0.2s, background-color 0.5s;
+}
+
+.active_link .underline {
+  width: 100%;
+  background-color: green;
+}
+
+.active_link {
+  color: green;
+}
+
+.bg-nav {
+  background: rgba(228, 240, 229, 0.95);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
