@@ -16,9 +16,25 @@ const Page = () => {
     event.preventDefault()
 
     try {
-      const response = await getRinjaniCultureAPI()
-    } catch (error) {
+      const response = await getRinjaniCultureAPI('login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+      })
 
+      console.log(response)
+
+      if (response.ok) {
+        // console.log('Login successful!');
+        alert('login succfuless')
+        console.log(data)
+      } else {
+        alert('login failed')
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   }
 
@@ -38,10 +54,10 @@ const Page = () => {
             {/* <Image src='logo.svg' width={150} height={10} alt="" /> */}
           </Link>
           <h1 className="text-5xl font-semibold font-sora text-green-700">Login</h1>
-          <form action="" className="space-y-8">
+          <form className="space-y-8" onSubmit={handleLogin}>
             <div className="space-y-6">
-              <InputFormSign title={`Email`} type={`email`} method={onHandlerEmail} />
-              <InputFormSign title={`Password`} type={`password`} method={onHandlerPassword} />
+              <InputFormSign title={`Email`} type={`email`} placeholder={`Input Email`} method={onHandlerEmail} />
+              <InputFormSign title={`Password`} type={`password`} placeholder={`Input Password`} method={onHandlerPassword} />
             </div>
             <div className="flex justify-between items-center">
               <label className="flex items-center space-x-2">
@@ -55,7 +71,7 @@ const Page = () => {
             </div>
           </form>
 
-          <Or/>
+          <Or />
 
           <div className="flex items-center space-x-2 justify-center">
             <Image src='/google.svg' width={28} height={28} alt="Google" />

@@ -19,10 +19,10 @@ const Page = () => {
           <h1 className="text-4xl font-semibold font-sora text-green-700">Register</h1>
           <form action="" className="space-y-8">
             <div className="space-y-6">
-              <InputFormSign title={'Username'} type={'text'} />
-              <InputFormSign title={'Email'} type={'email'} />
+              <InputFormSign title={'Username'} type={'text'} placeholder={`Input Username`} />
+              <InputFormSign title={'Email'} type={'email'} placeholder={`Input Email`} />
               <SelectCountry />
-              <InputFormSign title={'Password'} type={'password'} />
+              <InputFormSign title={'Password'} type={'password'} placeholder={`Input Password`}/>
             </div>
             <div>
               <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Register</button>
