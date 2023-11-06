@@ -1,0 +1,170 @@
+[
+    {
+        "id": 1,
+        "package_name": "Deluxe",
+        "category": "Rinjani",
+        "available": false,
+        "price": 25,
+        "rating": 4.6
+    },
+    {
+        "id": 2,
+        "package_name": "Standar",
+        "category": "Rinjani",
+        "available": true,
+        "price": 18,
+        "rating": 3.8
+    },
+    {
+        "id": 3,
+        "package_name": "Sharring",
+        "category": "Rinjani",
+        "available": true,
+        "price": 16,
+        "rating": 3.4
+    },
+    {
+        "id": 4,
+        "package_name": "Mulud Adat Bayan",
+        "category": "Culture",
+        "available": false,
+        "price": 22,
+        "rating": 2.1
+    },
+    {
+        "id": 5,
+        "package_name": "Lebaran Tinggi",
+        "category": "Culture",
+        "available": true,
+        "price": 17,
+        "rating": 1.4
+    },
+    {
+        "id": 6,
+        "package_name": "Lebaran Pendeq",
+        "category": "Culture",
+        "available": false,
+        "price": 16,
+        "rating": 1.1
+    },
+    {
+        "id": 7,
+        "package_name": "Gegerok Tandak",
+        "category": "Culture",
+        "available": false,
+        "price": 25,
+        "rating": 4.0
+    },
+    {
+        "id": 8,
+        "package_name": "Suling Dewa",
+        "category": "Culture",
+        "available": false,
+        "price": 21,
+        "rating": 4.8
+    },
+    {
+        "id": 9,
+        "package_name": "Genggong",
+        "category": "Culture",
+        "available": false,
+        "price": 24,
+        "rating": 2.4
+    },
+    {
+        "id": 10,
+        "package_name": "Joget Lawas",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 11,
+        "package_name": "Gendang Beleq",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 12,
+        "package_name": "Cupak Gurantang",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 13,
+        "package_name": "Dah Dah Pong",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 14,
+        "package_name": "Cungklik",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 15,
+        "package_name": "Tembang Lontar",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 16,
+        "package_name": "Budidaya Madu Trigona",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 17,
+        "package_name": "Pengolahan Kopi",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 18,
+        "package_name": "Pengolahan Lahan Pertanian",
+        "category": "Culture",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 19,
+        "package_name": "Sendang Gila n Tiu Kelep",
+        "category": "Lanscape",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 20,
+        "package_name": "Tiu Teja",
+        "category": "Lanscape",
+        "available": false,
+        "price": 23,
+        "rating": 2.0
+    },
+    {
+        "id": 21,
+        "package_name": "Sambik Elen",
+        "category": "Lanscape",
+        "available": true,
+        "price": 23,
+        "rating": 2.0
+    }
+]
