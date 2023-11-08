@@ -3,16 +3,17 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import imageUrl from '/public/logo.svg';
 
 const Footer = () => {
   const path = usePathname()
   const isLoginRegister = path === '/login' || path === '/register'
-  
+
   return (
     <footer className={`mt-4 text-white flex-col bg-[#68AB6F] ${isLoginRegister ? 'hidden' : ''}`}>
       <div className="container grid grid-cols-2 py-8">
         <div className="space-y-6">
-          <Image src='logo.svg' width={150} height={10} alt="" className="invert brightness-0" />
+          <Image src={imageUrl} width={300} height={200} style={{ width: '152px', height: 'auto' }} alt="" className="invert brightness-0" />
           {/* <img src="assets/svg/logo.svg" alt="" class="invert brightness-0"> */}
           <p className="text-sm font-light w-3/4">
             Welcome to Rinjani Culture, the gateway to the breathtaking beauty of nature, the wisdom of local culture, and the wonders of Mount Rinjani in Senaru!
