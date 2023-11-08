@@ -16,8 +16,8 @@ const Page = () => {
           </div>
         </div>
         <div className="my-auto flex justify-end relative">
-          <Image priority={true} src={`/assets/segaraanak.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl"/>
-          <Image priority={true} src={`/assets/presean.jpg`} width={500} height={500} alt="Presean" className="absolute -left-20 bottom-16 w-2/3 border-8 border-[green] rounded-[32px]"/>
+          <Image priority src={`/assets/segaraanak.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
+          <Image priority src={`/assets/presean.jpg`} width={500} height={500} alt="Presean" className="absolute -left-20 bottom-16 w-2/3 border-8 border-[green] rounded-[32px]" />
         </div>
       </section>
 
