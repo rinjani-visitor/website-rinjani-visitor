@@ -5,17 +5,17 @@ import Image from "next/image"
 const Page = () => {
   return (
     <div className="container space-y-20">
-      <section className="grid grid-cols-2 h-screen">
-        <div className="my-auto space-y-6">
+      <section className="grid  md:grid-cols-2 h-screen">
+        <div className="my-auto space-y-4 md:space-y-6 text-center md:text-left">
           <p className="text-base font-light">Rinjani Visitor make Easy</p>
-          <h1 className="text-[#32823A] font-semibold text-6xl">Find the Best Rinjani <br /> Trip in Here</h1>
-          <p className="text-2xl font-normal">We Provide What You <br />Need in Rinjani</p>
-          <div className="space-x-4 font-normal">
+          <h1 className="text-[#32823A] font-semibold text-3xl md:text-6xl ">Find the Best Rinjani Trip in Here</h1>
+          <p className="text-xl md:text-2xl font-normal">We Provide What You <br />Need in Rinjani</p>
+          <div className="space-y-2 md:space-y-0 md:space-x-4 font-normal flex flex-col md:flex-row">
             <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Get Started</button>
-            <button className="py-2 px-4 rounded-md text-[#32823A] border">Contact Us</button>
+            <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Contact Us</button>
           </div>
         </div>
-        <div className="my-auto flex justify-end relative">
+        <div className="my-auto flex justify-end relative -order-1 md:order-1">
           <Image priority src={`/assets/segaraanak.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
           <Image priority src={`/assets/presean.jpg`} width={500} height={500} alt="Presean" className="absolute -left-20 bottom-16 w-2/3 border-8 border-[green] rounded-[32px]" />
         </div>
@@ -37,15 +37,15 @@ const Page = () => {
           <p className="font-normal text-xl">Committed to providing services <br /> with an exeptional experience</p>
           <div className="grid grid-cols-3 divide-x text-center">
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">23</h3>
+              <h3 className="text-8xl font-semibold">21</h3>
               <p>Package Available</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">23</h3>
+              <h3 className="text-8xl font-semibold">21</h3>
               <p>Home Stay</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">23</h3>
+              <h3 className="text-8xl font-semibold">21</h3>
               <p>Year Operation</p>
             </div>
           </div>

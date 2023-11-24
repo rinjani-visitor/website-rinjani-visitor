@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import RadioButton from "./RadioButton";
 
 const PriceFilter = () => {
   const [selectedPrice, setSelectedPrice] = useState('');
@@ -19,17 +20,7 @@ const PriceFilter = () => {
           ["Highest"],
         ].map((title, index) => {
           return (
-            <label key={index} className="flex items-center space-x-1">
-              <input
-                type="radio"
-                name="price"
-                value={title}
-                onChange={handlePriceChange}
-              />
-              <p>
-                {title}
-              </p>
-            </label>
+            <RadioButton key={index} title={title} name={`price`} method={handlePriceChange} />
           )
         })
       }

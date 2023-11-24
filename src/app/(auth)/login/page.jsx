@@ -1,5 +1,6 @@
 'use client'
 
+import { setCookie } from "cookies-next"
 import Link from "next/link"
 import Image from "next/image"
 import Background from "@/components/Background"
@@ -7,16 +8,29 @@ import InputFormSign from "@/components/InputFormSign"
 import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
 import Or from "@/components/Or"
+import { useRouter } from "next/navigation"
+import Loading from "@/components/Loading"
 
 const Page = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const router = useRouter()
+
+  const [email, setEmail] = useState('muhfirdaus0805@gmail.com')
+  const [password, setPassword] = useState('Muhfirdaus@123')
+
+  const [isLoad, setIsLoad] = useState(false)
+
+  const load = isLoad ?
+    (
+      <Loading />
+    )
+    : null
 
   const handleLogin = async (event) => {
+    setIsLoad(true)
     event.preventDefault()
 
     try {
-      const response = await getRinjaniCultureAPI('login', {
+      const response = await getRinjaniCultureAPI('users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,12 +38,14 @@ const Page = () => {
         body: JSON.stringify({ email, password })
       })
 
-      console.log(response)
+      const data = await response.json()
+      const { acessToken, refreshToken } = data
 
       if (response.ok) {
-        // console.log('Login successful!');
+        setCookie('accessToken', acessToken)
+        setCookie('refreshToken', refreshToken)
+        router.push('/')
         alert('login succfuless')
-        console.log(data)
       } else {
         alert('login failed')
       }
@@ -48,6 +64,7 @@ const Page = () => {
 
   return (
     <div className="grid md:grid-cols-3 h-screen">
+      {load}
       <div className="md:col-span-2 md:w-1/2 m-auto">
         <div className="space-y-6">
           <Link href="/">
@@ -56,8 +73,8 @@ const Page = () => {
           <h1 className="text-5xl font-semibold font-sora text-green-700">Login</h1>
           <form className="space-y-8" onSubmit={handleLogin}>
             <div className="space-y-6">
-              <InputFormSign title={`Email`} type={`email`} placeholder={`Input Email`} method={onHandlerEmail} />
-              <InputFormSign title={`Password`} type={`password`} placeholder={`Input Password`} method={onHandlerPassword} />
+              <InputFormSign value={email} title={`Email`} type={`email`} placeholder={`Input Email`} method={onHandlerEmail} />
+              <InputFormSign value={password} title={`Password`} type={`password`} placeholder={`Input Password`} method={onHandlerPassword} />
             </div>
             <div className="flex justify-between items-center">
               <label className="flex items-center space-x-2">

@@ -7,12 +7,11 @@ import RatingFilter from "./RatingFilter"
 import StatusFilter from "./StatusFilter"
 
 const Filter = () => {
-  const pathName = usePathname() === '/packages'
-  console.log(pathName)
+  const pathName = usePathname()
   return (
     <div className="space-y-4">
       {
-        pathName ?
+        pathName.includes('package') ?
           <CategoryFilter />
           : ''
       }

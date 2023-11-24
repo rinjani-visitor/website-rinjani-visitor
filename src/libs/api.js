@@ -15,8 +15,7 @@ const getRinjaniCultureAPI = async (resource, options, query) => {
       process.env.NEXT_PUBLIC_API_BASE_URL
     }
 
-    const data = await response.json()
-    return data
+    return response
   } catch (error) {
     // Handle errors here, such as network errors or API errors
     console.error('Error fetching data:', error);
@@ -24,11 +23,5 @@ const getRinjaniCultureAPI = async (resource, options, query) => {
     throw error;
   }
 }
-
-// const getRinjaniCultureAPI = async (resource, query) => {
-//   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${resource}?${query}`)
-//   // const result = await response.json()
-//   return response
-// }
 
 export { getRinjaniCultureAPI }
