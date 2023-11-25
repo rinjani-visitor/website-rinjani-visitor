@@ -4,32 +4,35 @@ import HeaderPackage from "@/components/HeaderPackage";
 import CardPackage from "@/components/package/CardPackage";
 import Filter from "@/components/package/filter/Filter";
 import { getRinjaniCultureAPI } from "@/libs/api";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 
 const Page = () => {
-  const [data, setData] = useState([]);
+  const [token, setToken] = useState(getCookie('accessToken'))
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch(`/MOCK_DATA.json`)
-      .then(response => response.json())
-      .then(jsonData => {
-        // console.log(jsonData.length)
-        setData(jsonData);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await getRinjaniCultureAPI('products', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        const { data } = await response.json();
+        console.log(data);
+        setData(data)
+      } catch (error) {
+        console.log('Error fetch package: ', error);
+      }
+    };
 
-  const fetchPackage = async () => {
-    const response = await getRinjaniCultureAPI('products', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-  }
+    fetchData()
+  }, [])
+
+  console.log(data);
 
   return (
     <div className="container">
@@ -39,7 +42,7 @@ const Page = () => {
           <Filter />
         </div>
         <div className="col-span-4 grid md:grid-cols-4 grid-cols-2 gap-4 h-fit">
-          {
+          {/* {
             data.map((data, index) => {
               return (
                 <CardPackage
@@ -49,6 +52,22 @@ const Page = () => {
                   available={data.available}
                   rating={data.rating}
                 />
+              )
+            })
+          } */}
+
+          {
+            data?.map((data, index) => {
+              return (
+                // <p key={index}>{data.title}</p>
+                <CardPackage
+                  key={data.productId}
+                  name={data.title}
+                  price={data.lowestPrice}
+                  rating={data.rating}
+                  available={data.status}
+                  thumbnail={data.thumbnail}
+                />  
               )
             })
           }

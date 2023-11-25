@@ -1,6 +1,5 @@
 'use client'
 
-import { setCookie } from "cookies-next"
 import Link from "next/link"
 import Image from "next/image"
 import Background from "@/components/Background"
@@ -10,6 +9,7 @@ import { getRinjaniCultureAPI } from "@/libs/api"
 import Or from "@/components/Or"
 import { useRouter } from "next/navigation"
 import Loading from "@/components/Loading"
+import { getCookie, setCookie } from "cookies-next"
 
 const Page = () => {
   const router = useRouter()
@@ -42,10 +42,11 @@ const Page = () => {
       const { acessToken, refreshToken } = data
 
       if (response.ok) {
-        setCookie('accessToken', acessToken)
+        setCookie('accessToken', acessToken, { expires: 2 / (24 * 60) })
         setCookie('refreshToken', refreshToken)
+        const token = getCookie('accessToken')
+        console.log(token);
         router.push('/')
-        alert('login succfuless')
       } else {
         alert('login failed')
       }

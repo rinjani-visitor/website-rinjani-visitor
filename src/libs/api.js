@@ -17,9 +17,7 @@ const getRinjaniCultureAPI = async (resource, options, query) => {
 
     return response
   } catch (error) {
-    // Handle errors here, such as network errors or API errors
     console.error('Error fetching data:', error);
-    // Rethrow the error for the caller to handle
     throw error;
   }
 }

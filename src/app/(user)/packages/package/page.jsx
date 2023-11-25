@@ -1,5 +1,6 @@
 'use client'
 
+import Carosel from "@/components/package/Carosel";
 import CardReview from "@/components/review/CardReview";
 import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
@@ -44,7 +45,7 @@ const Page = () => {
             {
               like ?
                 <Heart size={32} weight="fill" />
-                : <Heart size={32}  className=""/>
+                : <Heart size={32} className="" />
             }
           </button>
           <ShareNetwork size={32} weight="fill" />
@@ -52,8 +53,9 @@ const Page = () => {
         </div>
       </section>
 
-      <section className="grid grid-cols-2">
-        <div>foto</div>
+      <section className="grid grid-cols-2 gap-6">
+        {/* <div></div> */}
+        <Carosel />
         <form className="space-y-4">
           <div>
             <p>Price</p>

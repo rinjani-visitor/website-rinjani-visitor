@@ -17,10 +17,16 @@ const DropDownUser = () => {
   const router = useRouter()
 
   const handleLogout = () => {
-    deleteCookie('accessToken')
-    router.push('/')
+    try {
+      deleteCookie('accessToken')
+      deleteCookie('refreshToken')
+      router.push('/')
+    } catch (error) {
+      console.error('Error during logout:', error)
+    }
     window.location.reload()
   };
+
 
   return (
     <div className="relative" data-te-dropdown-ref>

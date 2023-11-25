@@ -3,11 +3,11 @@ import Available from "./available/Available"
 import Unavailable from "./available/Unavailable"
 import Image from "next/image"
 
-const CardPackage = ({ name, price, rating, available }) => {
+const CardPackage = ({ name, price, rating, available, thumbnail }) => {
   return (
     <div className="p-3 border rounded-xl bg-green-500">
       <div className="aspect-square rounded-lg overflow-hidden">
-        <Image src="/assets/rinjani.jpg" alt="Rinjani" width={500} height={500} className="h-full object-cover"/>
+        <Image src={thumbnail} alt="Rinjani" width={500} height={500} className="h-full object-cover"/>
       </div>
       <div className="flex items-center justify-between mt-2 mb-1 text-white">
         <h2 className="font-medium truncate w-2/3">{name}</h2>

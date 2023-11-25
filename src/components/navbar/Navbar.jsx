@@ -10,13 +10,13 @@ import { List, X } from "@phosphor-icons/react"
 
 import imageUrl from '/public/logo.svg';
 import SearchInput from "./SearchInput"
-import { deleteCookie, getCookie } from "cookies-next"
+import { getCookie } from "cookies-next"
 
 const Navbar = () => {
   const path = usePathname()
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
   const [scrolling, setScrolling] = useState(false);
   const [token, setToken] = useState(getCookie('accessToken'));
 
