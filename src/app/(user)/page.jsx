@@ -78,7 +78,7 @@ const Page = () => {
           If you want to know more about Rinjani Visitors, you can contact us directly by writing this message
         </p>
         <div className="w-full text-center">
-          <input className="border w-3/4 px-6 h-20 text-xl rounded-2xl focus:outline-none" placeholder="Type here what you need..." />
+          <input className="border w-full md:w-3/4 px-6 md:h-20 h-10 md:text-xl rounded-lg md:rounded-2xl focus:outline-none" placeholder="Type here what you need..." />
         </div>
       </section>
     </div>

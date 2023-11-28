@@ -1,6 +1,4 @@
 'use client'
-
-import Carosel from "@/components/package/Carosel";
 import CardReview from "@/components/review/CardReview";
 import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";

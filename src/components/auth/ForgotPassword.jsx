@@ -22,7 +22,7 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post(getBaseURL('users/forgot-password'),
         {
-          email: email,
+          email
         },
         {
           headers: {
@@ -34,6 +34,12 @@ const ForgotPassword = () => {
       const { data } = response
 
       console.log(data);
+
+      if (!data.error) {
+        alert('berhasil')
+      } else {
+        alert('failed')
+      }
 
       console.log('Response:', response);
       setIsOpen(false)
