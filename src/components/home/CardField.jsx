@@ -16,12 +16,12 @@ const CardField = ({ title, body, order }) => {
   }
 
   return (
-    <div className="bg-white p-6 space-y-4 hover:text-white group transition duration-200 rounded-xl hover:bg-green-600 shadow">
+    <div className="bg-white p-6 space-y-2 hover:text-white group transition duration-200 rounded-xl hover:bg-green-600 shadow">
       <div className="aspect-square w-20 bg-[#C2E2C6] group-hover:bg-white rounded-md flex items-center justify-center">
         {iconField}
       </div>
-      <h1 className="font-medium text-lg">{title}</h1>
-      <p className="text-sm">
+      <h1 className="font-medium md:text-lg">{title}</h1>
+      <p className="md:text-sm text-xs">
         {body}
       </p>
     </div>

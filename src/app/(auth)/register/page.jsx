@@ -10,25 +10,25 @@ import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
 
 const Page = () => {
-  const [username, setUsername] = useState('danang')
-  const [email, setEmail] = useState('shafa1122@gmail.com')
-  const [country, setCountry] = useState('Indonesia')
-  const [password, setPassword] = useState('123123123')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [country, setCountry] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  console.log(country);
 
   const handlerRegister = async (event) => {
     event.preventDefault()
-
     const body = {
-      username: username,
+      name: username,
       email: email,
       country: country,
-      password: password
+      password: password,
+      confirmPassword: confirmPassword
     }
-    
-    console.log(JSON.stringify(body))
     try {
-      const response = await getRinjaniCultureAPI(
-        'register', {
+      const response = await getRinjaniCultureAPI('users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Page = () => {
 
       console.log(response);
 
-      if (!response.error) {
+      if (response.ok) {
         alert('succes')
       } else {
         alert(`register failed: ${response.message}`)
@@ -64,6 +64,10 @@ const Page = () => {
     setPassword(event.target.value)
   }
 
+  const onHandlerConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value)
+  }
+
   return (
     <div className="grid md:grid-cols-3 h-screen">
       <div className="md:col-span-2 md:w-1/2 m-auto">
@@ -78,6 +82,7 @@ const Page = () => {
               <InputFormSign title={'Email'} type={'email'} placeholder={`Input Email`} method={onHandlerEmail} />
               <SelectCountry method={onHandlerCountry} value={country} />
               <InputFormSign title={'Password'} type={'password'} placeholder={`Input Password`} method={onHandlerPassword} />
+              <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} method={onHandlerConfirmPassword} />
               {/* <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} /> */}
             </div>
             <div>

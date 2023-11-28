@@ -1,9 +1,11 @@
+'use client'
+
 import DropDownUser from "./DropDownUser"
 
-const IsLogin = ({ name = "Daus" }) => {
+const IsLogin = ({ logoutCallBack }) => {
   return (
     <div className="flex items-center space-x-4">
-      <DropDownUser />
+      <DropDownUser logoutCallBack={logoutCallBack} />
     </div>
   )
 }

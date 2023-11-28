@@ -8,7 +8,7 @@ import IsLogin from "./IsLogin"
 
 import { List, X } from "@phosphor-icons/react"
 
-import imageUrl from '/public/logo.svg';
+import imageUrl from '/public/RV1.png';
 import SearchInput from "./SearchInput"
 import { getCookie } from "cookies-next"
 
@@ -19,6 +19,8 @@ const Navbar = () => {
   const [isLogin, setIsLogin] = useState(false)
   const [scrolling, setScrolling] = useState(false);
   const [token, setToken] = useState(getCookie('accessToken'));
+
+  const getToken = () => setToken(getCookie('accessToken'))
 
   useEffect(() => {
     if (token) {
@@ -66,7 +68,7 @@ const Navbar = () => {
               ['Event', '/event', 'event'],
               ['Wish List', '/wishlist', 'wishlist'],
             ].map(([title, url, id]) => (
-              <li key={id} className={`text-green-500 hover:text-green-700 link ${path === url ? 'active_link text-green-700' : ''} group `}>
+              <li key={id} className={`text-green-500 hover:text-green-700 link ${path === url ? 'active_link text-green-700 font-bold' : ''} group `}>
                 <Link href={url}>
                   {title}
                 </Link>
@@ -79,7 +81,7 @@ const Navbar = () => {
             <SearchInput />
             {
               isLogin ?
-                <IsLogin />
+                <IsLogin logoutCallBack={getToken} />
                 : <LoginRegisterButton />
             }
           </div>

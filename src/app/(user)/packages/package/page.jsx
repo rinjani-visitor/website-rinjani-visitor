@@ -6,14 +6,6 @@ import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/re
 import { useEffect, useState } from "react";
 
 const Page = () => {
-  useEffect(() => {
-    const init = async () => {
-      const { Datepicker, Timepicker, Input, initTE, } = await import("tw-elements");
-      initTE({ Datepicker, Input, Timepicker });
-    };
-    init();
-  }, []);
-
   const [person, setPerson] = useState(0)
   const [like, setLike] = useState(false)
 
@@ -54,8 +46,8 @@ const Page = () => {
       </section>
 
       <section className="grid grid-cols-2 gap-6">
-        {/* <div></div> */}
-        <Carosel />
+        <div>foto</div>
+        {/* <Carosel /> */}
         <form className="space-y-4">
           <div>
             <p>Price</p>

@@ -3,9 +3,10 @@ import CardField from "@/components/home/CardField"
 import Image from "next/image"
 
 const Page = () => {
+
   return (
-    <div className="container space-y-20">
-      <section className="grid  md:grid-cols-2 h-screen">
+    <div className="container space-y-10 md:space-y-20">
+      <section className="grid md:grid-cols-2 h-screen">
         <div className="my-auto space-y-4 md:space-y-6 text-center md:text-left">
           <p className="text-base font-light">Rinjani Visitor make Easy</p>
           <h1 className="text-[#32823A] font-semibold text-3xl md:text-6xl ">Find the Best Rinjani Trip in Here</h1>
@@ -17,39 +18,39 @@ const Page = () => {
         </div>
         <div className="my-auto flex justify-end relative -order-1 md:order-1">
           <Image priority src={`/assets/segaraanak.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
-          <Image priority src={`/assets/presean.jpg`} width={500} height={500} alt="Presean" className="absolute -left-20 bottom-16 w-2/3 border-8 border-[green] rounded-[32px]" />
+          <Image priority src={`https://utfs.io/f/92ad6631-d79e-4fa9-ba42-6e48a80152f9-59hsri.jpg`} width={500} height={500} alt="Presean" className="absolute md:-left-20 left-0 bottom-16 w-2/3 border-8 border-[green] rounded-3xl" />
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-8">
-        <div className="grid grid-cols-2 gap-8 pe-28">
+      <section className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-4 md:pe-28">
           <div className="space-y-8">
             <CardField order={1} title={`Easy and Safe`} body={`Now ordering Rinjani tour packages can be done easily and safely`} />
-            <CardField order={2} title={`Cheap`} body={`Tour packages that are affordable and provide an extraordinary experience`} />
+            <CardField order={2} title={`Economical Affordable`} body={`Tour packages that are affordable and provide an extraordinary experience`} />
           </div>
           <div className="pt-8 space-y-8">
-            <CardField order={3} title={`Trusted`} body={`We try to provide the best to tourists by maintaining trust`} />
+            <CardField order={3} title={`Trusted and Reliable`} body={`We try to provide the best to tourists by maintaining trust`} />
             <CardField order={4} title={`Eco Tourism`} body={`Tourism while protecting preserving nature is the main goal`} />
           </div>
         </div>
-        <div className="space-y-8 text-end">
-          <h1 className="text-5xl font-semibold">Why Rinjani Visitor ?</h1>
-          <p className="font-normal text-xl">Committed to providing services <br /> with an exeptional experience</p>
-          <div className="grid grid-cols-3 divide-x text-center">
+        <div className="space-y-8 md:text-end text-center -order-1 md:order-1">
+          <h1 className="md:text-5xl text-3xl font-semibold text-rinjaniVisitor-green">Why Rinjani Visitor ?</h1>
+          <p className="font-normal text-lg md:text-xl">Committed to providing services <br /> with an exeptional experience</p>
+          <div className="grid grid-cols-3 divide-x-2 divide-slate-300 text-center">
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">21</h3>
-              <p>Package Available</p>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32] ">21</h3>
+              <p className="md:text-base text-sm font-normal">Package Available</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">21</h3>
-              <p>Home Stay</p>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">21</h3>
+              <p className="md:text-base text-sm font-normal">Package Available</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-8xl font-semibold">21</h3>
-              <p>Year Operation</p>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">21</h3>
+              <p className="md:text-base text-sm font-normal">Package Available</p>
             </div>
           </div>
-          <button className="px-4 py-2 rounded-lg text-white bg-green-500">Continue to explore</button>
+          <button className="px-4 py-2 rounded-lg text-white bg-rinjaniVisitor-green text-center w-full md:w-auto">Continue to explore</button>
         </div>
       </section>
 
@@ -65,16 +66,16 @@ const Page = () => {
         <VideoPlayer />
       </section>
 
-      <section className="">
+      {/* <section className="">
         <h1>Trip Package</h1>
         <p>Let’s start your journey with us to explore the beatiful rinjani</p>
         <button>See More Packages</button>
-      </section>
+      </section> */}
 
-      <section className="flex flex-col items-center space-y-10 py-10">
-        <h1 className="text-5xl font-semibold text-green-700">What are you waiting for?</h1>
-        <p className="text-center text-xl font-normal">
-          If you want to know more about Rinjani Visitors, <br /> you can contact us directly by writing this message
+      <section className="flex flex-col items-center space-y-4 md:space-y-10 py-10">
+        <h1 className="text-4xl md:text-5xl text-center md:text-start font-semibold text-green-700">What our customers say?</h1>
+        <p className="text-center text-sm md:text-xl font-normal">
+          If you want to know more about Rinjani Visitors, you can contact us directly by writing this message
         </p>
         <div className="w-full text-center">
           <input className="border w-3/4 px-6 h-20 text-xl rounded-2xl focus:outline-none" placeholder="Type here what you need..." />

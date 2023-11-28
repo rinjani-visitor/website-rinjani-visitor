@@ -3,7 +3,7 @@ import Available from "./available/Available"
 import Unavailable from "./available/Unavailable"
 import Image from "next/image"
 
-const CardPackage = ({ name, price, rating, available, thumbnail }) => {
+const CardPackage = ({ name, price, rating, available, thumbnail, productId }) => {
   return (
     <div className="p-3 border rounded-xl bg-green-500">
       <div className="aspect-square rounded-lg overflow-hidden">
@@ -22,7 +22,7 @@ const CardPackage = ({ name, price, rating, available, thumbnail }) => {
         }
       </div>
       <div>
-        <Link href={`/packages/package`} className="bg-white rounded-md w-full py-1 text-xs text-center block font-medium text-green-600">
+        <Link href={`/packages/${productId}`} className="bg-white rounded-md w-full py-1 text-xs text-center block font-medium text-green-600">
           Book Now
         </Link>
       </div>

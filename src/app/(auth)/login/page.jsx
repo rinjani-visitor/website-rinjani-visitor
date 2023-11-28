@@ -10,12 +10,13 @@ import Or from "@/components/Or"
 import { useRouter } from "next/navigation"
 import Loading from "@/components/Loading"
 import { getCookie, setCookie } from "cookies-next"
+import ForgotPassword from "@/components/auth/ForgotPassword"
 
 const Page = () => {
   const router = useRouter()
 
-  const [email, setEmail] = useState('muhfirdaus0805@gmail.com')
-  const [password, setPassword] = useState('Muhfirdaus@123')
+  const [email, setEmail] = useState('shafa.asyari.02@gmail.com')
+  const [password, setPassword] = useState('N2348n23DP6q')
 
   const [isLoad, setIsLoad] = useState(false)
 
@@ -39,19 +40,21 @@ const Page = () => {
       })
 
       const data = await response.json()
-      const { acessToken, refreshToken } = data
+      const { accessToken, refreshToken } = data
 
-      if (response.ok) {
-        setCookie('accessToken', acessToken, { expires: 2 / (24 * 60) })
+      if (response) {
+        setCookie('accessToken', accessToken)
         setCookie('refreshToken', refreshToken)
         const token = getCookie('accessToken')
-        console.log(token);
         router.push('/')
       } else {
         alert('login failed')
+        setIsLoad(false)
+        return
       }
     } catch (error) {
       console.error('Error during login:', error);
+      return
     }
   }
 
@@ -82,7 +85,8 @@ const Page = () => {
                 <input type="checkbox" className="h-4 w-4" />
                 <p>Remember me</p>
               </label>
-              <Link href='/' className="font-semibold">Forgot Password?</Link>
+              <ForgotPassword />
+              {/* <Link href='/' className="font-semibold">Forgot Password?</Link> */}
             </div>
             <div>
               <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Login</button>
