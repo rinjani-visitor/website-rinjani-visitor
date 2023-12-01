@@ -1,7 +1,7 @@
 'use client'
 import CardReview from "@/components/review/CardReview";
 import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Page = () => {
   const [person, setPerson] = useState(0)

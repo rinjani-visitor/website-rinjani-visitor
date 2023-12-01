@@ -71,9 +71,9 @@ const Page = () => {
   return (
     <div className="grid md:grid-cols-3 h-screen">
       <div className="md:col-span-2 md:w-1/2 m-auto">
-        <div className="space-y-6">
+        <div className="space-y-6 py-4">
           <Link href="/">
-            {/* <Image src='logo.svg' width={70} height={20} alt="" className="aspect-video"/> */}
+            <Image src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={150} height={10} alt="" style={{ width: '104px', height: 'auto' }} />
           </Link>
           <h1 className="text-4xl font-semibold font-sora text-green-700">Register</h1>
           <form className="space-y-8" onSubmit={handlerRegister}>

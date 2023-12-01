@@ -72,7 +72,7 @@ const Page = () => {
       <div className="md:col-span-2 md:w-1/2 m-auto">
         <div className="space-y-6">
           <Link href="/">
-            {/* <Image src='logo.svg' width={150} height={10} alt="" /> */}
+            <Image src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={150} height={10} alt="" style={{ width: '104px', height: 'auto' }} />
           </Link>
           <h1 className="text-5xl font-semibold font-sora text-green-700">Login</h1>
           <form className="space-y-8" onSubmit={handleLogin}>

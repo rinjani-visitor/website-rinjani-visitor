@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className={`mt-4 text-white flex-col bg-[#68AB6F] ${isLoginRegister ? 'hidden' : ''}`}>
       <div className="container grid md:grid-cols-2 py-8 space-y-2 md:space-y-0">
         <div className="md:space-y-6 space-y-3">
-          <Image src={imageUrl} width={300} height={200} style={{ width: '152px', height: 'auto' }} alt="" className="invert brightness-0" />
+          <Image src={`https://utfs.io/f/f101327d-61f5-4453-8e9d-d0d56945b816-s4hkpl.png`} width={300} height={200} style={{ width: '152px', height: 'auto' }} alt="rijani visitor putih" className="invert brightness-0" />
           {/* <img src="assets/svg/logo.svg" alt="" class="invert brightness-0"> */}
           <p className="text-sm font-light md:w-3/4">
             Welcome to Rinjani Culture, the gateway to the breathtaking beauty of nature, the wisdom of local culture, and the wonders of Mount Rinjani in Senaru!

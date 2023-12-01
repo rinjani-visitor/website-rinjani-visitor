@@ -17,7 +17,7 @@ const Page = () => {
           </div>
         </div>
         <div className="my-auto flex justify-end relative -order-1 md:order-1">
-          <Image priority src={`/assets/segaraanak.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
+          <Image priority src={`https://utfs.io/f/fe1f8d1c-8a1b-4bb9-bbbe-8a9452d98ec9-aatl72.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
           <Image priority src={`https://utfs.io/f/92ad6631-d79e-4fa9-ba42-6e48a80152f9-59hsri.jpg`} width={500} height={500} alt="Presean" className="absolute md:-left-20 left-0 bottom-16 w-2/3 border-8 border-[green] rounded-3xl" />
         </div>
       </section>
@@ -61,7 +61,7 @@ const Page = () => {
           <button className="px-4  py-2 rounded-lg text-white bg-green-500">Watch Our Video</button>
         </div>
         <div className="flex justify-end relative">
-          <Image src="/assets/danau.jpg" width={1000} height={1000} alt="..." className=" border-[green] h-screen w-auto object-contain border-8 rounded-tl-[60px] rounded-[20px]" />
+          <Image src={`https://utfs.io/f/4d0ecb10-846a-44ae-9cd4-6b67166438e6-1krp1h.jpg`} width={1000} height={1000} alt="..." className=" border-[green] h-screen w-auto object-contain border-8 rounded-tl-[60px] rounded-[20px]" />
         </div>
         <VideoPlayer />
       </section>
