@@ -54,16 +54,16 @@ const Page = () => {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 relative">
-        <div className="space-y-6">
-          <h1 className="text-5xl font-semibold text-[green]">About Us</h1>
-          <p className="text-2xl font-normal">Rinjani Visitor is a service to accommodate tourist in enjoying the beauty of Rinjani Mount and the culture of Lombok</p>
-          <button className="px-4  py-2 rounded-lg text-white bg-green-500">Watch Our Video</button>
+      <section className="grid md:grid-cols-2 relative space-y-6 md:space-y-0">
+        <div className="md:space-y-6 space-y-4 text-center md:text-left">
+          <h1 className="text-3xl md:text-5xl font-semibold text-[green]">About Us</h1>
+          <p className="md:text-xl font-normal">Rinjani Visitor is a service to accommodate tourist in enjoying the beauty of Rinjani Mount and the culture of Lombok</p>
+          <button className="px-4 py-2 rounded-lg text-white bg-green-500">Watch Our Video</button>
         </div>
-        <div className="flex justify-end relative">
-          <Image src={`https://utfs.io/f/4d0ecb10-846a-44ae-9cd4-6b67166438e6-1krp1h.jpg`} width={1000} height={1000} alt="..." className=" border-[green] h-screen w-auto object-contain border-8 rounded-tl-[60px] rounded-[20px]" />
+        <div className="flex flex-col justify-center relative space-y-4">
+          <VideoPlayer />
+          <Image src={`https://utfs.io/f/4d0ecb10-846a-44ae-9cd4-6b67166438e6-1krp1h.jpg`} width={1000} height={1000} alt="..." className=" border-rinjaniVisitor-green w-auto object-contain border-8 md:rounded-tl-[60px] rounded-[20px]" />
         </div>
-        <VideoPlayer />
       </section>
 
       {/* <section className="">

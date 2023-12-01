@@ -20,11 +20,11 @@ main {
 }
 
 #image-login {
-  background-image: url('/assets/airterjun.webp');
+  background-image: url('https://utfs.io/f/4535d575-6d47-4591-928d-bd92d171135e-9uv0jw.webp');
 }
 
 #image-register {
-  background-image: url('/assets/tenun.webp');
+  background-image: url('https://utfs.io/f/3d112a1f-77f0-4862-8f85-dbc89f2f553d-1tmyye.webp');
 }
 
 .custom-loader {

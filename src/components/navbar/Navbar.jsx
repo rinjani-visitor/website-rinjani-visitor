@@ -57,7 +57,7 @@ const Navbar = () => {
               : <List size={32} />
           }
         </button>
-        <div className={`md:static md:flex md:flex-1 justify-between items-center transition ${!isOpen ? 'hidden' : 'absolute top-20 left-0 w-full'}`}>
+        <div className={`md:static md:flex md:flex-1 justify-between items-center transition ease-in-out ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium md:space-x-5`}>
             <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>
@@ -79,7 +79,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row items-center space-x-4">
             {/* search input */}
             <SearchInput />
             {

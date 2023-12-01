@@ -14,7 +14,9 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div className='absolute right-2/4 transform translate-x-1/2 border-8 bottom-10 rounded-3xl overflow-hidden border-[green]'>
+    <div
+      className='static mx-auto w-80 md:w-auto md:absolute md:-left-24 md:bottom-12 border-8 rounded-3xl overflow-hidden border-rinjaniVisitor-green'
+    >
       <YouTube
         videoId='4PAwjEyuHB0'
         onReady={onReady}

@@ -40,15 +40,15 @@ const Page = () => {
       })
 
       const data = await response.json()
+      console.log(data);
       const { accessToken, refreshToken } = data
 
-      if (response) {
+      if (response.ok) {
         setCookie('accessToken', accessToken)
         setCookie('refreshToken', refreshToken)
-        const token = getCookie('accessToken')
         router.push('/')
       } else {
-        alert('login failed')
+        alert(data.errors)
         setIsLoad(false)
         return
       }
