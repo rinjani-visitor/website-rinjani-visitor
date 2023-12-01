@@ -20,9 +20,7 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "rinjani-visitor": "url(https://utfs.io/f/8f4dbd43-132d-4c48-a62b-a19c6753b92b-n09cpl.jpg)"
       },
     },
   },

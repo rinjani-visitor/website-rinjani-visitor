@@ -57,8 +57,8 @@ const Navbar = () => {
               : <List size={32} />
           }
         </button>
-        <div className={`md:static md:flex md:flex-1 justify-between items-center transition ease-in-out ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
-          <ul className={`flex md:flex-row flex-col font-medium md:space-x-5`}>
+        <div className={`z-[99] md:static md:flex md:flex-1 w-full justify-between items-center transition ease-in-out duration-1000 bg-rinjani-visitor md:bg-none px-2 md:px-0 ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
+          <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
             <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>
                 Home

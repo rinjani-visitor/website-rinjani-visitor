@@ -32,7 +32,7 @@ const DetailPackage = ({ id }) => {
 
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
   const handlerAddPerson = (event) => {
     event.preventDefault()
@@ -130,9 +130,16 @@ const DetailPackage = ({ id }) => {
           </div>
           <div>
             <h1 className="font-semibold text-2xl text-green-500">Review</h1>
+            {
+              data.Reviews && data.Reviews.length > 0 ?
+                (
+                  data.Reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} />)
+                )
+                : (<p>tidak ada review</p>)
+            }
+            {/* <CardReview />
             <CardReview />
-            <CardReview />
-            <CardReview />
+            <CardReview /> */}
           </div>
         </div>
       </section>
