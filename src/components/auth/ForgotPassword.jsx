@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import InputFormSign from '../InputFormSign'
 import axios from 'axios'
 import getBaseURL from '@/libs/getBaseURL'
+import { ToastContainer, toast } from 'react-toast'
 
 const ForgotPassword = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [email, setEmail] = useState('')
+
+  const errorToast = () => toast.error('Message sent successfully!', {})
 
   const handlerModal = () => {
     setEmail('')
@@ -33,17 +36,14 @@ const ForgotPassword = () => {
 
       const { data } = response
 
-      console.log(data.error);
-
       if (data.error) {
         alert('failed')
       }
       alert('berhasil')
-
       console.log('Response:', response);
       setIsOpen(false)
-
     } catch (error) {
+      errorToast()
       console.error('Error:', error.message);
     }
   };
@@ -58,6 +58,10 @@ const ForgotPassword = () => {
           <div className='mt-4 w-fit space-x-3 ml-auto justify-between flex'>
             <button onClick={handlerModal} type='button' className='py-2 px-6 rounded-md border-2 border-red-600 text-red-600'>Cancel</button>
             <button type='button' onClick={submitForgotPassword} className='py-2 px-6 text-white hover:bg-rinjaniVisitor-green bg-rinjaniVisitor-green/80 rounded-md'>Submit</button>
+          </div>
+          <div>
+            <button onClick={errorToast}>Say hi!</button>
+            <ToastContainer delay={5000} />
           </div>
         </div>
       </div>

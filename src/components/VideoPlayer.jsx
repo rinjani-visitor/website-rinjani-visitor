@@ -5,7 +5,7 @@ import YouTube from 'react-youtube';
 
 const VideoPlayer = () => {
   const options = {
-    width: '400',
+    width: '100%',
     height: '250',
   };
 
@@ -15,7 +15,7 @@ const VideoPlayer = () => {
 
   return (
     <div
-      className='static mx-auto w-80 md:w-auto md:absolute md:-left-24 md:bottom-12 border-8 rounded-3xl overflow-hidden border-rinjaniVisitor-green'
+      className='border-8 md:w-4/5  rounded-3xl overflow-hidden border-rinjaniVisitor-green'
     >
       <YouTube
         videoId='4PAwjEyuHB0'

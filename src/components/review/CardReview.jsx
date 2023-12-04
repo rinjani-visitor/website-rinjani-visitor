@@ -3,11 +3,10 @@ import { Star } from "@phosphor-icons/react"
 import Image from "next/image"
 
 const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) => {
-  const date = new Date()
   return (
     <div className="grid grid-cols-6 border-b-2 border-slate-300 py-6">
       <div className="aspect-square w-20 rounded-full bg-white overflow-hidden">
-        <Image src={imageProfile} alt="" widht={500} height={500} />
+        <Image src={imageProfile} alt="" width={1000} height={1000} />
       </div>
       <div className="col-span-5">
         <h1 className="font-medium text-lg">{name}</h1>
@@ -23,7 +22,7 @@ const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) =>
           </div>
           <p>{rating}</p>
           <div className="h-4 w-0.5 bg-slate-400"></div>
-          <p>{showFormattedDate(date)}</p>
+          <p>{timestamp}</p>
         </div>
         <p>{body}</p>
       </div>

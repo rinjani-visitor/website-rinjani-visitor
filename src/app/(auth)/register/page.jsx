@@ -8,17 +8,25 @@ import SelectCountry from "@/components/SelectCountry"
 import Or from "@/components/Or"
 import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
+import Swal from 'sweetalert2';
 
 const Page = () => {
+  const [isLoad, setIsLoad] = useState(false)
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [messageError, setMessageError] = useState(null)
 
-  console.log(country);
+  const errorInfo = messageError ?
+    (
+      <p className="text-red-500 font-medium text-base">{messageError}</p>
+    )
+    : null
 
   const handlerRegister = async (event) => {
+    setIsLoad(true)
     event.preventDefault()
     const body = {
       name: username,
@@ -35,14 +43,25 @@ const Page = () => {
         },
         body: JSON.stringify(body)
       })
-
       console.log(response);
 
+      const data = await response.json()
+      console.log(data);
       if (response.ok) {
-        alert('succes')
+        Swal.fire({
+          title: 'Register Success',
+          text: `${data.message}`,
+          icon: 'success',
+          confirmButtonText: 'OK',
+          customClass: {
+            confirmButton: 'bg-blue-500 text-white',
+          },
+          buttonsStyling: true
+        });
       } else {
-        alert(`register failed: ${response.message}`)
+        setMessageError(data.errors)
       }
+      setIsLoad(false)
     } catch (error) {
       console.error('Error during register:', error);
     }
@@ -70,12 +89,12 @@ const Page = () => {
 
   return (
     <div className="grid md:grid-cols-3 h-screen">
-      <div className="md:col-span-2 md:w-1/2 m-auto scale-[0.85]">
-        <div className="space-y-6">
+      <div className="md:col-span-2 ">
+        <div className="space-y-6 max-w-2xl m-auto p-4">
           <Link href="/">
             <Image src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={150} height={10} alt="" style={{ width: '104px', height: 'auto' }} />
           </Link>
-          <h1 className="text-4xl font-semibold font-sora text-green-700">Register</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-sora text-green-700">Register</h1>
           <form className="space-y-8" onSubmit={handlerRegister}>
             <div className="space-y-6">
               <InputFormSign title={'Name'} type={'text'} placeholder={`Input Name`} method={onHandlerUsername} />
@@ -83,10 +102,18 @@ const Page = () => {
               <SelectCountry method={onHandlerCountry} value={country} />
               <InputFormSign title={'Password'} type={'password'} placeholder={`Input Password`} method={onHandlerPassword} />
               <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} method={onHandlerConfirmPassword} />
-              {/* <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} /> */}
+              {errorInfo}
             </div>
             <div>
-              <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Register</button>
+              <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">
+                {
+                  isLoad ?
+                    (
+                      <div className="custom-loader mx-auto h-8 w-8"></div>
+                    )
+                    : ("Register")
+                }
+              </button>
             </div>
           </form>
           <Or />

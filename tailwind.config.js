@@ -16,7 +16,6 @@ module.exports = {
         center: true,
         padding: {
           DEFAULT: '1rem',
-          sm: '0rem'
         }
       },
       backgroundImage: {

@@ -45,7 +45,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`${scrolling ? 'bg-nav' : 'bg-transparent'} mb-4 h-20 z-40 text-sm shadow sticky top-0 transition-all duration-500`} >
+    <nav className={`${scrolling ? 'bg-nav' : 'bg-transparent'} mb-4 h-20 text-sm shadow sticky top-0 transition-all duration-500 z-[99]`} >
       <div className='container md:space-x-8 flex items-center h-full justify-between'>
         <Link href="/">
           <Image priority={true} src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={300} height={200} style={{ width: '104px', height: 'auto' }} alt='Logo Rinjani Culutre' className="h-auto aspect-auto" />
@@ -57,7 +57,7 @@ const Navbar = () => {
               : <List size={32} />
           }
         </button>
-        <div className={`z-[99] md:static md:flex md:flex-1 w-full justify-between items-center transition ease-in-out duration-1000 bg-rinjani-visitor md:bg-none px-2 md:px-0 ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
+        <div className={`md:static md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-2 md:px-0 ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
             <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>

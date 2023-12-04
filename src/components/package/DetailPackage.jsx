@@ -133,9 +133,9 @@ const DetailPackage = ({ id }) => {
             {
               data.Reviews && data.Reviews.length > 0 ?
                 (
-                  data.Reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} />)
+                  data.Reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
                 )
-                : (<p>tidak ada review</p>)
+                : (<p>No one review</p>)
             }
             {/* <CardReview />
             <CardReview />

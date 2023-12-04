@@ -8,7 +8,7 @@ const CarouselPicture = ({ images }) => {
       {
         images && images.map(image => (
           <div key={image.fotoId} className="h-[360px]">
-            <Image src={`${image.url}`} alt="presean" width={500} height={500} className="object-center" priority/>
+            <Image src={`${image.url}`} alt="presean" width={1000} height={500} className="object-center" priority/>
           </div>
         ))
       }

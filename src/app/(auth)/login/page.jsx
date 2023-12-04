@@ -11,18 +11,24 @@ import { useRouter } from "next/navigation"
 import Loading from "@/components/Loading"
 import { getCookie, setCookie } from "cookies-next"
 import ForgotPassword from "@/components/auth/ForgotPassword"
+import { ToastContainer, toast } from 'react-toast'
+
 
 const Page = () => {
   const router = useRouter()
 
   const [email, setEmail] = useState('shafa.asyari.02@gmail.com')
   const [password, setPassword] = useState('N2348n23DP6q')
-  const [messageError, setMessageError] = useState(null)
   const [isLoad, setIsLoad] = useState(false)
+  const [messageError, setMessageError] = useState(null)
 
-  const errorInfo = messageError ? (
-    <p className="text-red-500 font-medium text-base">{messageError}</p>
-  )
+  const errorToast = () => toast.error('Internal Server Error', {})
+
+
+  const errorInfo = messageError ?
+    (
+      <p className="text-red-500 font-medium text-base">{messageError}</p>
+    )
     : null
 
   const load = isLoad ?
@@ -54,11 +60,11 @@ const Page = () => {
         router.push('/')
       } else {
         setMessageError(data.errors)
-        // alert(data.errors)
         setIsLoad(false)
         return
       }
     } catch (error) {
+      errorToast()
       console.error('Error during login:', error);
       return
     }
@@ -113,6 +119,7 @@ const Page = () => {
         </div>
       </div>
       <Background id_image={`image-login`} />
+      <ToastContainer delay={5000} />
     </div>
   )
 }

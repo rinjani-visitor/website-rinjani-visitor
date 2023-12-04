@@ -5,19 +5,19 @@ import Image from "next/image"
 const Page = () => {
 
   return (
-    <div className="container space-y-10 md:space-y-20">
-      <section className="grid md:grid-cols-2 h-screen">
-        <div className="my-auto space-y-4 md:space-y-6 text-center md:text-left">
-          <p className="text-base font-light">Rinjani Visitor make Easy</p>
-          <h1 className="text-[#32823A] font-semibold text-3xl md:text-6xl ">Find the Best Rinjani Trip in Here</h1>
-          <p className="text-xl md:text-2xl font-normal">We Provide What You <br />Need in Rinjani</p>
+    <div className="container max-w-6xl space-y-10">
+      <section className="grid md:grid-cols-2">
+        <div className="my-auto space-y-2 md:space-y-4 text-center md:text-left">
+          <p className="text-xl font-semibold text-rinjaniVisitor-green">Rinjani Visitor make Easy</p>
+          <h1 className="text-[#32823A] font-semibold text-3xl md:text-5xl ">Find the Best Rinjani Trip in Here</h1>
+          <p className="text-lg md:text-xl font-base">We Provide What You Need in Rinjani</p>
           <div className="space-y-2 md:space-y-0 md:space-x-4 font-normal flex flex-col md:flex-row">
             <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Get Started</button>
             <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Contact Us</button>
           </div>
         </div>
         <div className="my-auto flex justify-end relative -order-1 md:order-1">
-          <Image priority src={`https://utfs.io/f/fe1f8d1c-8a1b-4bb9-bbbe-8a9452d98ec9-aatl72.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
+          <Image priority src={`https://utfs.io/f/fe1f8d1c-8a1b-4bb9-bbbe-8a9452d98ec9-aatl72.jpg`} width={500} height={500} alt="segara anak" className="w-4/5 object-cover border-8 border-[green] rounded-tr-xl rounded-s-[40px] rounded-br-[40px] shadow-2xl" />
           <Image priority src={`https://utfs.io/f/92ad6631-d79e-4fa9-ba42-6e48a80152f9-59hsri.jpg`} width={500} height={500} alt="Presean" className="absolute md:-left-20 left-0 bottom-16 w-2/3 border-8 border-[green] rounded-3xl" />
         </div>
       </section>
@@ -59,10 +59,10 @@ const Page = () => {
           <h1 className="text-3xl md:text-5xl font-semibold text-[green]">About Us</h1>
           <p className="md:text-xl font-normal">Rinjani Visitor is a service to accommodate tourist in enjoying the beauty of Rinjani Mount and the culture of Lombok</p>
           <button className="px-4 py-2 rounded-lg text-white bg-green-500">Watch Our Video</button>
-        </div>
-        <div className="flex flex-col justify-center relative space-y-4">
           <VideoPlayer />
-          <Image src={`https://utfs.io/f/4d0ecb10-846a-44ae-9cd4-6b67166438e6-1krp1h.jpg`} width={1000} height={1000} alt="..." className=" border-rinjaniVisitor-green w-auto object-contain border-8 md:rounded-tl-[60px] rounded-[20px]" />
+        </div>
+        <div className="flex justify-end relative space-y-4 overflow-hidden">
+          <Image src={`https://utfs.io/f/4d0ecb10-846a-44ae-9cd4-6b67166438e6-1krp1h.jpg`} width={1000} height={1000} alt="..." className=" border-rinjaniVisitor-green md:w-4/5 object-cover border-8 md:rounded-tl-[60px] rounded-[20px]" />
         </div>
       </section>
 
