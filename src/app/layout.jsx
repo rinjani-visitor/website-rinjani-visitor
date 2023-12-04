@@ -1,5 +1,4 @@
 import { Poppins } from 'next/font/google'
-import Swal from 'sweetalert2';
 import './globals.css'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] })
