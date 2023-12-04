@@ -17,8 +17,13 @@ const Page = () => {
 
   const [email, setEmail] = useState('shafa.asyari.02@gmail.com')
   const [password, setPassword] = useState('N2348n23DP6q')
-
+  const [messageError, setMessageError] = useState(null)
   const [isLoad, setIsLoad] = useState(false)
+
+  const errorInfo = messageError ? (
+    <p className="text-red-500 font-medium text-base">{messageError}</p>
+  )
+    : null
 
   const load = isLoad ?
     (
@@ -48,7 +53,8 @@ const Page = () => {
         setCookie('refreshToken', refreshToken)
         router.push('/')
       } else {
-        alert(data.errors)
+        setMessageError(data.errors)
+        // alert(data.errors)
         setIsLoad(false)
         return
       }
@@ -69,16 +75,17 @@ const Page = () => {
   return (
     <div className="grid md:grid-cols-3 h-screen">
       {load}
-      <div className="md:col-span-2 md:w-1/2 m-auto">
-        <div className="space-y-6">
+      <div className="md:col-span-2 my-auto">
+        <div className="space-y-6 max-w-2xl mx-auto p-4">
           <Link href="/">
             <Image src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={150} height={10} alt="" style={{ width: '104px', height: 'auto' }} />
           </Link>
-          <h1 className="text-5xl font-semibold font-sora text-green-700">Login</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-sora text-green-700">Login</h1>
           <form className="space-y-8" onSubmit={handleLogin}>
             <div className="space-y-6">
               <InputFormSign value={email} title={`Email`} type={`email`} placeholder={`Input Email`} method={onHandlerEmail} />
               <InputFormSign value={password} title={`Password`} type={`password`} placeholder={`Input Password`} method={onHandlerPassword} />
+              {errorInfo}
             </div>
             <div className="flex justify-between items-center">
               <label className="flex items-center space-x-2">
