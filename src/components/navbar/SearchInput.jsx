@@ -17,12 +17,12 @@ const SearchInput = () => {
   }
 
   return (
-    <div className="flex items-center h-10 rounded-lg overflow-hidden">
+    <div className="flex items-center h-10 rounded-lg overflow-hidden w-full">
       <input
         ref={searchRef}
         placeholder='Search Package'
         type="search"
-        className="px-4 h-10 focus:outline-none"
+        className="px-4 h-10 focus:outline-none flex-1"
         onKeyPress={(event) => event.key === 'Enter' && hanldeSeacrh(event) }
       />
       <button className='cursor-pointer bg-green-600 h-full px-2' onClick={hanldeSeacrh}>

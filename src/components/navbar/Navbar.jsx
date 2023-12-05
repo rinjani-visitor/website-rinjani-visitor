@@ -21,6 +21,10 @@ const Navbar = () => {
   const getToken = () => setToken(getCookie('accessToken'))
 
   useEffect(() => {
+    setIsOpen(false);
+  }, [path]);
+  
+  useEffect(() => {
     if (token) {
       setIsLogin(true);
     } else {
@@ -57,7 +61,7 @@ const Navbar = () => {
               : <List size={32} />
           }
         </button>
-        <div className={`md:static md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-2 md:px-0 ${!isOpen ? 'absolute left-0 -top-60' : 'absolute top-20 left-0 w-full'}`}>
+        <div className={`md:static md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-4 py-4 md:py-0 md:px-0 h-screen md:h-auto ${!isOpen ? 'absolute left-full top-[76px] w-full' : 'absolute left-0 top-[76px] w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
             <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>
@@ -79,7 +83,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col md:flex-row items-center space-x-4">
+          <div className="flex mt-2 md:mt-0 flex-col md:flex-row items-start md:items-center md:space-x-4 space-y-2 md:space-y-0">
             {/* search input */}
             <SearchInput />
             {
