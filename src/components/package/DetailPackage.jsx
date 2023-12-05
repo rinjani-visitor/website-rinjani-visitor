@@ -72,7 +72,7 @@ const DetailPackage = ({ id }) => {
 
       <section className="grid grid-cols-2 gap-6">
         <div>
-          <CarouselPicture images={data.Fotos} />
+          <CarouselPicture images={data.fotos} />
         </div>
         <form className="space-y-4">
           <div>
