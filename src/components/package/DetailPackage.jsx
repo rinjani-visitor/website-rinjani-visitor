@@ -136,8 +136,10 @@ const DetailPackage = ({ id }) => {
             </div>
             
           </div>
-            <div>
+            <div className="space-y-4">
               <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
+              <div className="grid grid-cols-3 gap-2 ">
+                
               {
                 data.reviews && data.reviews.length > 0 ?
                   (
@@ -145,6 +147,8 @@ const DetailPackage = ({ id }) => {
                   )
                   : (<p>No one review</p>)
               }
+              </div>
+              
               {/* <CardReview />
               <CardReview />
               <CardReview /> */}
