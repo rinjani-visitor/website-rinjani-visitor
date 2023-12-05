@@ -4,7 +4,7 @@ import ReactStars from 'react-stars'
 const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) => {
 
   return (
-    <div className=" p-4  rounded-md bg-green-600 text-white space-y-4">
+    <div className=" p-4 rounded-md bg-green-700 text-white space-y-4">
       <div className="flex space-x-2 items-center">
         <div className="aspect-square w-20 rounded-full bg-white overflow-hidden">
           <Image src={imageProfile} alt="" width={1000} height={1000} />
@@ -14,9 +14,11 @@ const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) =>
           <p className="text-sm">{country}</p>
           <div className="flex  space-x-2">
             <ReactStars
+              edit={false}
               value={rating}
               count={5}
               size={16}
+              color1={'#ffffff'}
               color2={'#ffd700'} />
             <p>|</p>
             <p>{timestamp}</p>
