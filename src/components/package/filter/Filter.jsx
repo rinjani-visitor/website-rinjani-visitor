@@ -9,7 +9,7 @@ import StatusFilter from "./StatusFilter"
 const Filter = () => {
   const pathName = usePathname()
   return (
-    <div className=" xl:space-y-4 max-lg:flex max-lg:justify-between border border-red-600 max-lg:w-8/12 max-sm:w-full">
+    <div className=" xl:space-y-4 max-lg:flex max-lg:justify-between  max-lg:w-8/12 max-sm:w-full">
       {
         pathName.includes('package') ?
           <CategoryFilter />
