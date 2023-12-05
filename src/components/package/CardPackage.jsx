@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const CardPackage = ({ name, price, rating, available, thumbnail, productId }) => {
   return (
-    <div className="p-3 border rounded-xl bg-green-500">
+    <div className="p-3 border rounded-xl bg-green-700">
       <div className="aspect-square rounded-lg overflow-hidden">
         <Image src={thumbnail} alt="Rinjani" width={500} height={500} className="h-full object-cover"/>
       </div>
@@ -22,7 +22,7 @@ const CardPackage = ({ name, price, rating, available, thumbnail, productId }) =
         }
       </div>
       <div>
-        <Link href={`/packages/${productId}`} className="bg-white rounded-md w-full py-1 text-xs text-center block font-medium text-green-600">
+        <Link href={`/packages/${productId}`} className="bg-white rounded-md w-full py-2 text-xs text-center block font-medium text-green-600">
           Book Now
         </Link>
       </div>
