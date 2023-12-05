@@ -1,9 +1,7 @@
 import { Star } from "@phosphor-icons/react"
-import moment from "moment/moment"
 import Image from "next/image"
 
 const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) => {
-  const utcTimestamp = moment(timestamp, "YYYY-MM-DD HH:mm:ss").utc().format('YYYY-MM-DD HH:mm:ss');
 
   return (
     <div className="grid grid-cols-6 border-b-2 border-slate-300 py-6">
@@ -24,7 +22,7 @@ const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) =>
           </div>
           <p>{rating}</p>
           <div className="h-4 w-0.5 bg-slate-400"></div>
-          <p>{utcTimestamp}</p>
+          <p>{timestamp}</p>
         </div>
         <p>{body}</p>
       </div>
