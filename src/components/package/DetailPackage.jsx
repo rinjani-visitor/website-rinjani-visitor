@@ -49,9 +49,9 @@ const DetailPackage = ({ id }) => {
   return (
     <div className="container space-y-8">
       <section className="grid grid-cols-2 max-lg:grid-cols-1 max-lg:space-y-4">
-        <div className="space-y-2 border border-blue-600 ">
+        <div className="space-y-2">
           <p className="text-sm capitalize max-sm:text-xs text-slate-700">Packages/{data.category}/{data.subCategory}</p>
-          <h1 className="font-semibold text-3xl text-gray-800 max-sm:text-xl max-lg:text-2xl border border-red-600">{data.title}</h1>
+          <h1 className="font-semibold text-3xl text-gray-800 max-sm:text-xl max-lg:text-2xl ">{data.title}</h1>
           <div className="flex space-x-4 text-gray-800 font-normal">
             <div className="flex items-center space-x-2"><Star size={24} weight="fill" /> <span>{data.rating}</span></div>
             <div className="flex items-center space-x-2"><MapPin size={24} weight="fill" /> <span>{data.location}</span></div>
@@ -135,9 +135,9 @@ const DetailPackage = ({ id }) => {
             <div>
               <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
               {
-                data.Reviews && data.Reviews.length > 0 ?
+                data.reviews && data.reviews.length > 0 ?
                   (
-                    data.Reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
+                    data.reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
                   )
                   : (<p>No one review</p>)
               }
