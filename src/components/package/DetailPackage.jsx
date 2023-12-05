@@ -92,16 +92,16 @@ const DetailPackage = ({ id }) => {
           <div className="max-sm:space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Person</h1>
             <div className="flex space-x-4 w-fit max-lg:w-full max-sm:justify-between overflow-hidden justify-center rounded-md">
-              <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> - </button>
+              <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> - </button>
               <p className="w-7 max-lg:w-6/12 bg-white rounded-md p-2 text-center">{person}</p>
-              <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> + </button>
+              <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> + </button>
             </div>
           </div>
           <div className=" space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
             <input type="text" className="border bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
           </div>
-          <button type="submit" className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
+          <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
         </form>
       </section>
 
