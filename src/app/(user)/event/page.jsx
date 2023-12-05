@@ -14,7 +14,7 @@ export default function page() {
                 <FilterPackage />
             </div>
             <div className="grid grid-cols-4 ">
-                <div className="col-span-4 max-sm:col-span-6 max-lg:col-span-5 border border-red-600">
+                <div className="col-span-4 max-sm:col-span-6 max-lg:col-span-5 ">
                 <CardPackageList/>
                 </div>
             </div>
