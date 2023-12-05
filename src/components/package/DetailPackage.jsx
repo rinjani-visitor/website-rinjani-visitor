@@ -48,10 +48,10 @@ const DetailPackage = ({ id }) => {
 
   return (
     <div className="container space-y-8">
-      <section className="grid grid-cols-2">
+      <section className="grid grid-cols-2 max-lg:grid-cols-1 max-lg:space-y-4">
         <div className="space-y-2">
-          <p className="text-sm capitalize">Packages/{data.category}/{data.subCategory}</p>
-          <h1 className="font-semibold text-3xl text-gray-800">{data.title}</h1>
+          <p className="text-sm capitalize max-sm:text-xs text-slate-700">Packages/{data.category}/{data.subCategory}</p>
+          <h1 className="font-semibold text-3xl text-gray-800 max-sm:text-xl max-lg:text-2xl ">{data.title}</h1>
           <div className="flex space-x-4 text-gray-800 font-normal">
             <div className="flex items-center space-x-2"><Star size={24} weight="fill" /> <span>{data.rating}</span></div>
             <div className="flex items-center space-x-2"><MapPin size={24} weight="fill" /> <span>{data.location}</span></div>
@@ -70,9 +70,9 @@ const DetailPackage = ({ id }) => {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-6">
+      <section className="grid grid-cols-2 gap-6 max-sm:grid-cols-1 ">
         <div>
-          <CarouselPicture images={data.Fotos} />
+          <CarouselPicture images={data.fotos} />
         </div>
         <form className="space-y-4">
           <div>
@@ -89,58 +89,62 @@ const DetailPackage = ({ id }) => {
               ))
             }
           </div>
-          <div>
+          <div className="max-sm:space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Person</h1>
-            <div className="flex space-x-4 w-fit overflow-hidden justify-center rounded-md">
-              <button onClick={handlerReducePerson} className="w-10 bg-green-500 hover:bg-green-700 text-white"> - </button>
-              <p className="w-7 text-center">{person}</p>
-              <button onClick={handlerAddPerson} className="w-10 bg-green-500 hover:bg-green-700 text-white"> + </button>
+            <div className="flex space-x-4 w-fit max-lg:w-full max-sm:justify-between overflow-hidden justify-center rounded-md">
+              <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> - </button>
+              <p className="w-7 max-lg:w-6/12 bg-white rounded-md p-2 text-center">{person}</p>
+              <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> + </button>
             </div>
           </div>
-          <div>
+          <div className=" space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input type="text" className="border bg-transparent py-2 px-3 w-1/2 focus:outline-none rounded-md" placeholder="Input price ($40-$90/person)" />
+            <input type="text" className="border bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
           </div>
           <button type="submit" className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
         </form>
       </section>
 
-      <section className="grid grid-cols-2">
+      <section className="grid grid-cols-1">
         <div className="space-y-4">
           <div>
-            <h1 className="font-semibold text-2xl text-green-500">Description</h1>
-            <p>{data.description}</p>
+            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Description</h1>
+            <p className=" max-sm:text-sm text-slate-900">{data.description}</p>
           </div>
-          <div>
-            <h1 className="font-semibold text-2xl text-green-500">Itenary</h1>
-            <ul className="list-disc list-inside">
-              <li>Lorem</li>
-              <li>Lorem</li>
-            </ul>
+
+          <div className="max-lg:flex max-lg:space-x-10 xl:space-y-4">
+            <div>
+              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Itenary</h1>
+              <ul className="list-none list-inside">
+                <li>Lorem</li>
+                <li>Lorem</li>
+              </ul>
+            </div>
+            <div>
+              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Facility</h1>
+              <ul className="list-none list-inside">
+                {
+                  data.facilities?.map((facility, index) => (
+                    <li key={index}>{facility}</li>
+                  ))
+                }
+              </ul>
+            </div>
+            
           </div>
-          <div>
-            <h1 className="font-semibold text-2xl text-green-500">Facility</h1>
-            <ul className="list-disc list-inside">
+            <div>
+              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
               {
-                data.facilities?.map((facility, index) => (
-                  <li key={index}>{facility}</li>
-                ))
+                data.reviews && data.reviews.length > 0 ?
+                  (
+                    data.reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
+                  )
+                  : (<p>No one review</p>)
               }
-            </ul>
-          </div>
-          <div>
-            <h1 className="font-semibold text-2xl text-green-500">Review</h1>
-            {
-              data.Reviews && data.Reviews.length > 0 ?
-                (
-                  data.Reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
-                )
-                : (<p>No one review</p>)
-            }
-            {/* <CardReview />
-            <CardReview />
-            <CardReview /> */}
-          </div>
+              {/* <CardReview />
+              <CardReview />
+              <CardReview /> */}
+            </div>
         </div>
       </section>
     </div >
