@@ -79,7 +79,7 @@ const DetailPackage = ({ id }) => {
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Price</h1>
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
-          <div className="flex  w-6/12 space-x-4 max-sm:w-full">
+          <div className="flex  w-6/12 space-x-4 max-lg:w-full">
             <input type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
             <input type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
           </div>
