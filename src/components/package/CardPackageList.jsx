@@ -21,7 +21,7 @@ async function fetchData(query = null) {
 }
 
 export default async function CardPackageList({ query = null }) {
-  const data = await fetchData()
+  const data = await fetchData(query)
 
   return (
     <div className='col-span-4 grid md:grid-cols-4 grid-cols-2 gap-4 h-fit'>
