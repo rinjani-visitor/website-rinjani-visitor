@@ -79,6 +79,10 @@ const DetailPackage = ({ id }) => {
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Price</h1>
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
+          <div className="flex  w-6/12 space-x-4 max-sm:w-full">
+            <input type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
+            <input type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
+          </div>
           <div className="flex flex-wrap">
             {
               data.addOns?.map((item, index) => (
@@ -99,7 +103,7 @@ const DetailPackage = ({ id }) => {
           </div>
           <div className=" space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input type="text" className="border bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
+            <input type="text" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
           </div>
           <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
         </form>
