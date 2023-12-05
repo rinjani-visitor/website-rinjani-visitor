@@ -4,32 +4,37 @@ import CardPackage from './CardPackage';
 
 import React from 'react'
 import axios from 'axios'
+import getBaseURL from '@/libs/getBaseURL';
 
-async function fetchData(){
+async function fetchData(query = null) {
   try {
-    const res = await axios.get('https://test.rinjanivisitor.com/api/products')
-    return res.data
+    const res = await axios.get(getBaseURL('products'), {
+      params: query, // Menambahkan query parameters
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return res.data.data
   } catch (error) {
     console.log(error)
   }
 }
 
-export default async function CardPackageList() {
-  const fetchProducts = await fetchData()
-  const data = fetchProducts.data
-  
+export default async function CardPackageList({ query = null }) {
+  const data = await fetchData()
+
   return (
     <div className='col-span-4 grid md:grid-cols-4 grid-cols-2 gap-4 h-fit'>
-      {data.map((item)=>(
+      {data?.map((item) => (
         <CardPackage
-        key={item.productId}
-        name={item.title}
-        price={item.lowestPrice}
-        rating={item.rating}
-        available={item.status}
-        thumbnail={item.thumbnail}
-        productId={item.productId}
-      />
+          key={item.productId}
+          name={item.title}
+          price={item.lowestPrice}
+          rating={item.rating}
+          available={item.status}
+          thumbnail={item.thumbnail}
+          productId={item.productId}
+        />
       ))}
     </div>
   )
