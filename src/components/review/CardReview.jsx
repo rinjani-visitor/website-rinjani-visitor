@@ -1,5 +1,4 @@
 import { Star } from "@phosphor-icons/react"
-import moment from "moment/moment"
 import Image from "next/image"
 
 const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) => {
