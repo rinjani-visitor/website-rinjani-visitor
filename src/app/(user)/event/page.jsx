@@ -10,7 +10,7 @@ export default function page() {
             <HeaderPackage title={`Events`} subtitle={`Rinjani Visitor is a service to accommodate tourists in enjoying the beauty of Mount Rinjani and the culture of Lombok`} />
         </div>
         <div className='xl:flex xl:space-x-6 max-xl:space-y-6'>
-            <div className="">
+            <div className="xl:space-y-4 max-lg:flex max-lg:justify-between  max-lg:w-8/12 max-sm:w-full">
                 <FilterPackage />
             </div>
             <div className="grid grid-cols-4 ">
