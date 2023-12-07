@@ -1,8 +1,6 @@
-'use client'
-
 import HeaderPackage from "@/components/HeaderPackage";
 import CardPackageList from "@/components/package/CardPackageList";
-import Filter from "@/components/package/filter/Filter";
+import Filter from "@/components/package/Filter";
 
 const Page = () => {
   return (
