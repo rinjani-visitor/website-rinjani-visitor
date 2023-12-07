@@ -18,11 +18,8 @@
         "react": "^18",
         "react-dom": "^18",
         "react-responsive-carousel": "^3.2.23",
-<<<<<<< HEAD
         "react-select": "^5.8.0",
-=======
         "react-stars": "^2.2.5",
->>>>>>> 9d91f3d710b38c056a1574d3a6ccb3af063463f3
         "react-toast": "^1.0.3",
         "react-youtube": "^10.1.0",
         "sweetalert2": "^11.10.1"

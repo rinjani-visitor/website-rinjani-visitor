@@ -1,6 +1,4 @@
 'use client'
-
-import CardNotif from "@/components/notification/CardNotif"
 import { hasCookie } from "cookies-next"
 import NotifCard from "@/components/notif/NotifCard"
 
@@ -15,7 +13,6 @@ const Page = () => {
             <h1 className="font-semibold text-3xl text-[green]">Notification</h1>
             <p className="font-normal">Heres yout update</p>
           </div>
-          <CardNotif />
           <div className="p-4 space-y-4">
             <NotifCard />
             <NotifCard />

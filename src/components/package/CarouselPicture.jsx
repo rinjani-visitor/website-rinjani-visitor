@@ -7,7 +7,7 @@ const CarouselPicture = ({ images }) => {
     <Carousel showThumbs={false}>
       {
         images && images.map(image => (
-          <div key={image.fotoId} className="h-[360px]">
+          <div key={image.fotoId} className="md:h-[500px] h-[320px]">
             <Image src={`${image.url}`} alt="presean" width={1000} height={500} className="object-cover w-full h-full" priority/>
           </div>
         ))

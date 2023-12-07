@@ -3,22 +3,35 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+const category = [
+  { value: 'rinjani', label: 'Rinjani' },
+  { value: 'lanscape', label: 'Lanscape' },
+  { value: 'culture', label: 'Culture' },
+];
+
+const price = [
+  { value: 'asc', label: 'Lowest' },
+  { value: 'desc', label: 'Highest' },
 ];
 
 export default function Filter() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <div className="App">
+    <div className="">
       <Select
         defaultValue={selectedOption}
         onChange={setSelectedOption}
-        options={options}
+        options={category}
+        placeholder={`Select Category`}
+        isSearchable={true}
       />
+      {/* <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        options={price}
+        placeholder={`Select Price`}
+      /> */}
     </div>
   );
 }

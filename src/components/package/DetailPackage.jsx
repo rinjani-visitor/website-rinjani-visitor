@@ -4,11 +4,15 @@ import getBaseURL from "@/libs/getBaseURL";
 import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/react";
 import axios from "axios"
 import { useEffect, useState } from "react";
+import CheckboxButtonAddOn from "./CheckboxButtonAddOn";
 
 const DetailPackage = ({ id }) => {
   const [person, setPerson] = useState(0)
   const [data, setData] = useState([])
   const [like, setLike] = useState(data.userFavorited)
+  const [selectedValues, setSelectedValues] = useState([]);
+
+  console.log(selectedValues);
 
   const fetchData = async () => {
     try {
@@ -17,7 +21,6 @@ const DetailPackage = ({ id }) => {
         {
           headers: {
             'Content-Type': 'application/json',
-            // Tambahkan header lainnya sesuai kebutuhan Anda
           },
         }
       )
@@ -86,10 +89,13 @@ const DetailPackage = ({ id }) => {
           <div className="flex flex-wrap">
             {
               data.addOns?.map((item, index) => (
-                <div key={index}>
-                  <input type="checkbox" id={`${item}`} className="checked:bg-black peer" hidden />
-                  <label htmlFor={`${item}`} className="mr-2 mb-2 peer-checked:bg-black border px-4 py-2">{item}</label>
-                </div>
+                <CheckboxButtonAddOn
+                  key={index}
+                  id={item}
+                  label={item}
+                  selectedValues={selectedValues}
+                  setSelectedValues={setSelectedValues}
+                />
               ))
             }
           </div>
@@ -115,7 +121,6 @@ const DetailPackage = ({ id }) => {
             <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Description</h1>
             <p className=" max-sm:text-sm text-slate-900">{data.description}</p>
           </div>
-
           <div className="max-lg:flex max-lg:space-x-10 xl:space-y-4">
             <div>
               <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Itenary</h1>
@@ -134,11 +139,11 @@ const DetailPackage = ({ id }) => {
                 }
               </ul>
             </div>
-            
+
           </div>
-            <div className="space-y-4">
-              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
-              <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
+          <div className="space-y-4">
+            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
+            <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
               {
                 data.reviews && data.reviews.length > 0 ?
                   (
@@ -146,12 +151,12 @@ const DetailPackage = ({ id }) => {
                   )
                   : (<p>No one review</p>)
               }
-              </div>
-              
-              {/* <CardReview />
+            </div>
+
+            {/* <CardReview />
               <CardReview />
               <CardReview /> */}
-            </div>
+          </div>
         </div>
       </section>
     </div >
