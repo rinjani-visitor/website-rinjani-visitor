@@ -79,6 +79,10 @@ const DetailPackage = ({ id }) => {
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Price</h1>
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
+          <div className="flex  w-6/12 space-x-4 max-lg:w-full">
+            <input type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
+            <input type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
+          </div>
           <div className="flex flex-wrap">
             {
               data.addOns?.map((item, index) => (
@@ -92,16 +96,16 @@ const DetailPackage = ({ id }) => {
           <div className="max-sm:space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Person</h1>
             <div className="flex space-x-4 w-fit max-lg:w-full max-sm:justify-between overflow-hidden justify-center rounded-md">
-              <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> - </button>
+              <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> - </button>
               <p className="w-7 max-lg:w-6/12 bg-white rounded-md p-2 text-center">{person}</p>
-              <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-500 hover:bg-green-700 text-white"> + </button>
+              <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> + </button>
             </div>
           </div>
           <div className=" space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input type="text" className="border bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
+            <input type="text" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
           </div>
-          <button type="submit" className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
+          <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
         </form>
       </section>
 
@@ -132,8 +136,9 @@ const DetailPackage = ({ id }) => {
             </div>
             
           </div>
-            <div>
+            <div className="space-y-4">
               <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
+              <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
               {
                 data.reviews && data.reviews.length > 0 ?
                   (
@@ -141,6 +146,8 @@ const DetailPackage = ({ id }) => {
                   )
                   : (<p>No one review</p>)
               }
+              </div>
+              
               {/* <CardReview />
               <CardReview />
               <CardReview /> */}

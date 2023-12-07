@@ -1,22 +1,26 @@
 
 import HeaderPackage from "@/components/HeaderPackage";
 import CardPackageList from "@/components/package/CardPackageList";
-import FilterPackage from "@/components/package/filter/Filter";
+import FilterPackage from "@/components/package/filter/FilterNew";
 
 const Page = () => {
-  return (
-    <div className="container">
-      <HeaderPackage title={`Home Stay`} subtitle={`Explore rinjani mountain and feel to live with local people`} />
-      <div className="grid grid-cols-5">
-        <div className="border">
-          <FilterPackage />
+    return (
+        <div className="container">
+            <div className='w-7/12 max-sm:w-full'>
+                <HeaderPackage title={`Homestay`} subtitle={`Rinjani Visitor is a service to accommodate tourists in enjoying the beauty of Mount Rinjani and the culture of Lombok`} />
+            </div>
+            <div className='xl:flex xl:space-x-6 max-xl:space-y-6'>
+                <div className="">
+                    <FilterPackage />
+                </div>
+                <div className="grid grid-cols-4 ">
+                    <div className="col-span-4 max-sm:col-span-6 max-lg:col-span-5 ">
+                        <CardPackageList />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className=" col-span-4">
-          <CardPackageList/>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Page;
