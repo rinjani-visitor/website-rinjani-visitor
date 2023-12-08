@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #F6FFFA;
+  background-color: #f5f5f5;
   /* background-image: url('https://utfs.io/f/8f4dbd43-132d-4c48-a62b-a19c6753b92b-n09cpl.jpg'); */
 }
 
