@@ -12,8 +12,8 @@ const Page = () => {
           <h1 className="text-[#32823A] font-semibold text-3xl md:text-5xl ">Find the Best Rinjani Trip in Here</h1>
           <p className="text-lg md:text-xl font-base">We Provide What You Need in Rinjani</p>
           <div className="space-y-2 md:space-y-0 md:space-x-4 font-normal flex flex-col md:flex-row">
-            <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Get Started</button>
-            <button className="py-2 px-4 text-white rounded-md bg-[#32823A]">Contact Us</button>
+            <button className="py-2 px-4 text-white rounded-md bg-[#32823A] hover:bg-green-700">Get Started</button>
+            <button className="py-2 px-4 text-[#32823A] hover:text-white hover:bg-[#32823a] rounded-md border border-[#32823A]">Contact Us</button>
           </div>
         </div>
         <div className="my-auto flex justify-end relative -order-1 md:order-1">
