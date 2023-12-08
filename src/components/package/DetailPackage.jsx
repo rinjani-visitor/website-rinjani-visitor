@@ -73,7 +73,7 @@ const DetailPackage = ({ id }) => {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-6 max-sm:grid-cols-1 ">
+      <section className="grid grid-cols-2 gap-6 max-sm:grid-cols-1">
         <div>
           <CarouselPicture images={data.fotos} />
         </div>
@@ -115,22 +115,23 @@ const DetailPackage = ({ id }) => {
         </form>
       </section>
 
-      <section className="grid grid-cols-1">
-        <div className="space-y-4">
-          <div>
-            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Description</h1>
+      <section className="grid grid-cols-1 space-y-4">
+        <div className="space-y-4 shadow-md p-4 bg-white rounded-md">
+
+          <div className="">
+            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Description</h1>
             <p className=" max-sm:text-sm text-slate-900">{data.description}</p>
           </div>
           <div className="max-lg:flex max-lg:space-x-10 xl:space-y-4">
             <div>
-              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Itenary</h1>
+              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Itenary</h1>
               <ul className="list-none list-inside">
                 <li>Lorem</li>
                 <li>Lorem</li>
               </ul>
             </div>
             <div>
-              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Facility</h1>
+              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Facility</h1>
               <ul className="list-none list-inside">
                 {
                   data.facilities?.map((facility, index) => (
@@ -141,8 +142,10 @@ const DetailPackage = ({ id }) => {
             </div>
 
           </div>
-          <div className="space-y-4">
-            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-500">Review</h1>
+          
+        </div>
+        <div className="space-y-4 p-4 bg-white rounded-md shadow-md">
+            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Review</h1>
             <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
               {
                 data.reviews && data.reviews.length > 0 ?
@@ -157,7 +160,6 @@ const DetailPackage = ({ id }) => {
               <CardReview />
               <CardReview /> */}
           </div>
-        </div>
       </section>
     </div >
   )
