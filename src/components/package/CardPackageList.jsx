@@ -24,7 +24,7 @@ export default async function CardPackageList({ query = null }) {
   const data = await fetchData(query)
 
   return (
-    <div className='col-span-4 grid md:grid-cols-4 grid-cols-2 gap-4 h-fit'>
+    <div className='col-span-4 grid md:grid-cols-1 grid-cols-1 gap-4 h-fit'>
       {data?.map((item) => (
         <CardPackage
           key={item.productId}
@@ -34,6 +34,7 @@ export default async function CardPackageList({ query = null }) {
           available={item.status}
           thumbnail={item.thumbnail}
           productId={item.productId}
+          location={item.location}
         />
       ))}
     </div>
