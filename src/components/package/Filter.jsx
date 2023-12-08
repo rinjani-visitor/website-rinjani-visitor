@@ -29,7 +29,7 @@ export default function Filter() {
   const [selectedStatus, setSelectedStatus] = useState(null);
 
   return (
-    <div className="">
+    <div className="space-y-4">
       <Select
         defaultValue={selectedCategory}
         onChange={setSelectedCategory}
