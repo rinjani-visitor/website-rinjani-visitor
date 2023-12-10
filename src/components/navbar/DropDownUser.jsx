@@ -2,13 +2,18 @@
 import { User } from "@phosphor-icons/react";
 import { deleteCookie } from "cookies-next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DropDownUser = ({ logoutCallBack }) => {
   const router = useRouter()
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const path = usePathname()
 
+  useEffect(()=>{
+    setDropdownOpen(false)
+  }, [path])
+  
   const handleLogout = () => {
     try {
       deleteCookie('accessToken')
@@ -30,14 +35,12 @@ const DropDownUser = ({ logoutCallBack }) => {
         onClick={toggleDropdown}
         className="px-2 py-2 hover:bg-green-700 bg-green-600 transition text-white rounded-full flex items-center space-x-2"
         type="button"
-        id="dropdownMenuButton1"
       >
         <User size={24} color="white" />
       </button>
       <ul
-        className={`absolute z-[1000] float-right mr-5 ${isDropdownOpen ? 'block' : 'hidden'
-          } w-36 list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700`}
-        aria-labelledby="dropdownMenuButton1">
+        className={`absolute top-14 right-0 w-36 rounded-lg border-none bg-white text-base shadow-lg ${!isDropdownOpen ? 'invisible' : "visible"}`}
+      >
         <li>
           <Link
             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
@@ -52,13 +55,6 @@ const DropDownUser = ({ logoutCallBack }) => {
             data-te-dropdown-item-ref
           >Notification</Link>
         </li>
-        {/* <li>
-          <Link
-            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-            href="/"
-            data-te-dropdown-item-ref
-          >Logout</Link>
-        </li> */}
         <li>
           <button
             onClick={handleLogout}
@@ -66,7 +62,6 @@ const DropDownUser = ({ logoutCallBack }) => {
             Logout
           </button>
         </li>
-
       </ul>
     </div>
   );

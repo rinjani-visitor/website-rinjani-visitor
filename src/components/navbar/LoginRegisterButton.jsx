@@ -8,7 +8,7 @@ const LoginRegisterButton = () => {
       <Link href='/login' className='px-5 h-10 text-center border-2 md:w-24 items-center justify-center flex text-green-600 font-semibold rounded-md border-rinjaniVisitor-green'>
         Login
       </Link>
-      <Link href='/register' className='bg-green-600 text-white px-5 md:w-24 h-10 items-center justify-center flex rounded-md'>
+      <Link href='/register' className='bg-rinjaniVisitor-green text-white px-5 md:w-24 h-10 items-center justify-center flex rounded-md'>
         Register
       </Link>
     </div>

@@ -1,10 +1,40 @@
 'use client'
 
 import InputFormSign from "@/components/InputFormSign"
-import { useState } from "react"
+import getBaseURL from "@/libs/getBaseURL"
+import { getCookie } from "cookies-next"
+import { useEffect, useState } from "react"
+import Image from "next/image"
 
 const Page = () => {
-  const [userName, setUsername] = useState('shafaio')
+  const [data, setData] = useState(null)
+  const [userName, setUsername] = useState("")
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(getBaseURL('users'), {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setData(data.data)
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData()
+  }, [])
 
   const handlerUserName = (event) => {
     setUsername(event.target.value)
@@ -14,7 +44,9 @@ const Page = () => {
     <div className="space-y-6">
       <div className="space-y-3">
         <p>My Avatar (max. 2MB)</p>
-        <div className="rounded-full aspect-square h-24 bg-slate-400"></div>
+        <div className="rounded-full aspect-square h-28 bg-white mb-6 overflow-hidden">
+          <Image src={data?.profilPicture} width={200} height={200} alt='...' />
+        </div>
         <input
           accept=".jpg, .jpeg, .png"
           type="file"
@@ -26,15 +58,15 @@ const Page = () => {
         <InputFormSign
           title={`Username`}
           type={`text`}
-          value={userName}
+          value={data?.name}
           method={handlerUserName}
         />
-        <InputFormSign title={`Email`} type={`email`} />
-        <InputFormSign title={`Phone Number`} type={`tel`} />
-        <InputFormSign title={`Country`} type={`text`} />
+        <InputFormSign title={`Email`} type={`email`} value={data?.email} />
+        <InputFormSign title={`Phone Number`} type={`tel`} value={data?.phoneNumber} />
+        <InputFormSign title={`Country`} type={`text`} value={data?.country}/>
         <div className="flex justify-between space-x-2">
           <button className="border w-full font-medium rounded-md h-10 text-red-500">Cancel</button>
-          <button className="border w-full font-medium rounded-md h-10 text-white bg-green-500 hover:bg-green-600">Save My Profile</button>
+          <button className="border w-full font-medium rounded-md h-10 text-white bg-green-700 hover:bg-green-800">Save My Profile</button>
         </div>
       </form>
     </div>

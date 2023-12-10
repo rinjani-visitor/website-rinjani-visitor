@@ -8,7 +8,6 @@ import SelectCountry from "@/components/SelectCountry"
 import Or from "@/components/Or"
 import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
-import Swal from 'sweetalert2';
 
 const Page = () => {
   const [isLoad, setIsLoad] = useState(false)
@@ -18,12 +17,24 @@ const Page = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [messageError, setMessageError] = useState(null)
+  const [messageSuccess, setMessageSuccess] = useState(null)
 
   const errorInfo = messageError ?
     (
-      <p className="text-red-500 font-medium text-base">{messageError}</p>
+      <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 " role="alert">
+        <span class="font-medium">Danger alert!</span> {messageError}.
+      </div>
     )
     : null
+
+  const successInfo = messageSuccess ?
+    (
+      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200" role="alert">
+        <span class="font-medium">Success alert!</span> {messageSuccess}
+      </div>
+    )
+    : null
+
 
   const handlerRegister = async (event) => {
     setIsLoad(true)
@@ -48,16 +59,7 @@ const Page = () => {
       const data = await response.json()
       console.log(data);
       if (response.ok) {
-        Swal.fire({
-          title: 'Register Success',
-          text: `${data.message}`,
-          icon: 'success',
-          confirmButtonText: 'OK',
-          customClass: {
-            confirmButton: 'bg-blue-500 text-white',
-          },
-          buttonsStyling: true
-        });
+        setMessageSuccess(data.message)
       } else {
         setMessageError(data.errors)
       }
@@ -103,6 +105,7 @@ const Page = () => {
               <InputFormSign title={'Password'} type={'password'} placeholder={`Input Password`} method={onHandlerPassword} />
               <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} method={onHandlerConfirmPassword} />
               {errorInfo}
+              {successInfo}
             </div>
             <div>
               <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">

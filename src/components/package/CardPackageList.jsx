@@ -1,5 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import { getRinjaniCultureAPI } from '@/libs/api';
 import CardPackage from './CardPackage';
 
 import React from 'react'
@@ -24,8 +22,9 @@ export default async function CardPackageList({ query = null }) {
   const data = await fetchData(query)
 
   return (
-    <div className='col-span-4 grid md:grid-cols-1 grid-cols-1 gap-4 h-fit'>
-      {data?.map((item) => (
+    <div className='grid md:grid-cols-1 grid-cols-1 gap-4'>
+    {data?.length > 0 ? (
+      data.map((item) => (
         <CardPackage
           key={item.productId}
           name={item.title}
@@ -36,8 +35,12 @@ export default async function CardPackageList({ query = null }) {
           productId={item.productId}
           location={item.location}
         />
-      ))}
-    </div>
+      ))
+    ) : (
+      <p>Paket tidak tersedia</p>
+    )}
+  </div>
+  
   )
 }
 

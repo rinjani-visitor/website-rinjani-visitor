@@ -29,12 +29,12 @@ export default function Filter() {
   const [selectedStatus, setSelectedStatus] = useState(null);
 
   return (
-    <div className="space-y-4">
+    <>
       <Select
         defaultValue={selectedCategory}
         onChange={setSelectedCategory}
         options={category}
-        placeholder={`Select Category Filter`}
+        placeholder={`Category Filter`}
         isSearchable={false}
       />
 
@@ -42,7 +42,7 @@ export default function Filter() {
         defaultValue={selectedPrice}
         onChange={setSelectedPrice}
         options={price}
-        placeholder={`Select Price Filter`}
+        placeholder={`Price Filter`}
         isSearchable={false}
       />
 
@@ -50,9 +50,9 @@ export default function Filter() {
         defaultValue={selectedRating}
         onChange={setSelectedRating}
         options={rating}
-        placeholder={`Select Rating Filter`}
+        placeholder={`Rating Filter`}
         isSearchable={false}
       />
-    </div>
+    </>
   );
 }

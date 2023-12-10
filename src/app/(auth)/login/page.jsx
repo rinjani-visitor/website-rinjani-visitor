@@ -8,7 +8,6 @@ import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
 import Or from "@/components/Or"
 import { useRouter } from "next/navigation"
-import Loading from "@/components/Loading"
 import { getCookie, setCookie } from "cookies-next"
 import ForgotPassword from "@/components/auth/ForgotPassword"
 import { ToastContainer, toast } from 'react-toast'
@@ -18,22 +17,18 @@ const Page = () => {
   const router = useRouter()
 
   const [email, setEmail] = useState('shafa.asyari.02@gmail.com')
-  const [password, setPassword] = useState('N2348n23DP6q')
+  const [password, setPassword] = useState('qqP7jHjg9DHR')
   const [isLoad, setIsLoad] = useState(false)
   const [messageError, setMessageError] = useState(null)
 
-  const errorToast = () => toast.error('Internal Server Error', {})
+  const errorToast = () => toast.error('Internal Server Error')
 
 
   const errorInfo = messageError ?
     (
-      <p className="text-red-500 font-medium text-base">{messageError}</p>
-    )
-    : null
-
-  const load = isLoad ?
-    (
-      <Loading />
+      <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 " role="alert">
+        <span className="font-medium"> {messageError}</span>
+      </div>
     )
     : null
 
@@ -51,7 +46,6 @@ const Page = () => {
       })
 
       const data = await response.json()
-      console.log(data);
       const { accessToken, refreshToken } = data
 
       if (response.ok) {
@@ -60,9 +54,8 @@ const Page = () => {
         router.push('/')
       } else {
         setMessageError(data.errors)
-        setIsLoad(false)
-        return
       }
+      setIsLoad(false)
     } catch (error) {
       errorToast()
       console.error('Error during login:', error);
@@ -80,7 +73,6 @@ const Page = () => {
 
   return (
     <div className="grid md:grid-cols-3 h-screen">
-      {load}
       <div className="md:col-span-2 my-auto">
         <div className="space-y-6 max-w-2xl mx-auto p-4">
           <Link href="/">
@@ -102,7 +94,13 @@ const Page = () => {
               {/* <Link href='/' className="font-semibold">Forgot Password?</Link> */}
             </div>
             <div>
-              <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">Login</button>
+              <button className={`font-medium text-base w-full ${isLoad ? 'bg-slate-300' : "bg-green-500 hover:bg-green-600"} h-10 transition rounded-lg text-white`}>
+                {
+                  isLoad ? (
+                    <div className="custom-loader w-6 h-6 mx-auto"></div>
+                  ) : "Login"
+                }
+              </button>
             </div>
           </form>
 

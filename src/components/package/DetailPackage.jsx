@@ -5,13 +5,18 @@ import { DotsThree, Heart, MapPin, ShareNetwork, Star } from "@phosphor-icons/re
 import axios from "axios"
 import { useEffect, useState } from "react";
 import CheckboxButtonAddOn from "./CheckboxButtonAddOn";
+import { getCookie } from "cookies-next";
 
 const DetailPackage = ({ id }) => {
   const [person, setPerson] = useState(0)
   const [data, setData] = useState([])
-  const [like, setLike] = useState(data.userFavorited)
   const [selectedValues, setSelectedValues] = useState([]);
+  const [date, setDate] = useState(null)
+  const [time, setTime] = useState(null)
+  const [offeringPrice, setOfferingPrice] = useState(null)
+  const [like, setLike] = useState(data?.userFavorited)
 
+  console.log(`${date} ${time}`);
   console.log(selectedValues);
 
   const fetchData = async () => {
@@ -49,6 +54,55 @@ const DetailPackage = ({ id }) => {
       : setPerson(person)
   }
 
+  const handlerDate = (event) => {
+    setDate(event.target.value)
+  }
+
+  const handlerTime = (event) => {
+    setTime(event.target.value)
+  }
+
+  const handlerOfferingPrice = (event) => {
+    setOfferingPrice(event.target.value)
+  }
+
+  const submitBooking = async (event) => {
+    event.preventDefault();
+
+    const body = {
+      productId: id,
+      startDateTime: `${date} ${time}`,
+      addOns: selectedValues.join(', '),
+      offeringPrice: offeringPrice,
+      totalPersons: `${person}`
+    };
+
+    try {
+      const response = await fetch(getBaseURL('booking'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getCookie('accessToken')}`,
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!response.ok) {
+        // Handle error response
+        throw new Error('Network response was not ok');
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+    } catch (error) {
+      // Handle fetch error
+      console.error('Error submitting booking:', error);
+    }
+  };
+
+
+
   return (
     <div className="container space-y-8">
       <section className="grid grid-cols-2 max-lg:grid-cols-1 max-lg:space-y-4">
@@ -64,12 +118,10 @@ const DetailPackage = ({ id }) => {
           <button onClick={() => setLike(!like)} className="transition-all ease-in-out">
             {
               like ?
-                <Heart size={32} weight="fill" />
-                : <Heart size={32} className="" />
+                <Heart size={40} weight="fill" />
+                : <Heart size={40} className="" />
             }
           </button>
-          <ShareNetwork size={32} weight="fill" />
-          <DotsThree size={32} weight="bold" />
         </div>
       </section>
 
@@ -77,14 +129,14 @@ const DetailPackage = ({ id }) => {
         <div>
           <CarouselPicture images={data.fotos} />
         </div>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={submitBooking}>
           <div>
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Price</h1>
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
           <div className="flex  w-6/12 space-x-4 max-lg:w-full">
-            <input type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
-            <input type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white" />
+            <input onChange={handlerDate} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
+            <input onChange={handlerTime} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
           </div>
           <div className="flex flex-wrap">
             {
@@ -109,7 +161,7 @@ const DetailPackage = ({ id }) => {
           </div>
           <div className=" space-y-2">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input type="text" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input price ($40-$90/person)" />
+            <input type="text" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input Price ($40-$90/person)" onChange={handlerOfferingPrice} />
           </div>
           <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
         </form>
@@ -142,24 +194,24 @@ const DetailPackage = ({ id }) => {
             </div>
 
           </div>
-          
+
         </div>
         <div className="space-y-4 p-4 bg-white rounded-md shadow-md">
-            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Review</h1>
-            <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
-              {
-                data.reviews && data.reviews.length > 0 ?
-                  (
-                    data.reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
-                  )
-                  : (<p>No one review</p>)
-              }
-            </div>
+          <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Review</h1>
+          <div className="grid grid-cols-3 gap-2 max-sm:grid-cols-1">
+            {
+              data.reviews && data.reviews.length > 0 ?
+                (
+                  data.reviews.map((item) => <CardReview key={item.id} name={item.name} body={item.messageReview} country={item.country} rating={item.rating} imageProfile={item.profilPicture} timestamp={item.createdAt} />)
+                )
+                : (<p>No one review</p>)
+            }
+          </div>
 
-            {/* <CardReview />
+          {/* <CardReview />
               <CardReview />
               <CardReview /> */}
-          </div>
+        </div>
       </section>
     </div >
   )
