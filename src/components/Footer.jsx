@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="text-sm space-y-2 font-light">
               {[
                 ['FAQ', '/'],
-                ['Privacy', '/'],
+                ['Privacy n Policy', '/privacy_policy'],
                 ['Term of Service', '/'],
               ].map(([title, url]) => (
                 <li key={title}>
