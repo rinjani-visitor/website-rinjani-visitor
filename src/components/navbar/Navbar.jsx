@@ -8,14 +8,14 @@ import IsLogin from "./IsLogin"
 
 import { List, X } from "@phosphor-icons/react"
 import SearchInput from "./SearchInput"
-import { getCookie } from "cookies-next"
+import { getCookie, hasCookie } from "cookies-next"
 
 const Navbar = () => {
   const path = usePathname()
 
   const [isOpen, setIsOpen] = useState(false)
   const [isLogin, setIsLogin] = useState(false)
-  const [scrolling, setScrolling] = useState(false);
+  const [scrolling, setScrolling] = useState(0);
   const [token, setToken] = useState(getCookie('accessToken'));
 
   const getToken = () => setToken(getCookie('accessToken'))
@@ -23,7 +23,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
   }, [path]);
-  
+
   useEffect(() => {
     if (token) {
       setIsLogin(true);
@@ -34,22 +34,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(window.scrollY);
     };
 
+    // Tambahkan event listener untuk perubahan scroll
     window.addEventListener("scroll", handleScroll);
 
+    // Membersihkan event listener saat komponen dilepas
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <nav className={`${scrolling ? 'bg-nav' : 'bg-transparent'} mb-4 h-20 text-sm shadow sticky top-0 transition-all duration-500 z-[99]`} >
+    <nav className={`${scrolling > 0 ? 'bg-nav' : 'bg-transparent'} mb-4 h-20 text-sm shadow sticky top-0 transition-all duration-500 z-[99]`} >
       <div className='container md:space-x-8 flex items-center h-full justify-between'>
         <Link href="/">
           <Image priority={true} src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={300} height={200} style={{ width: '104px', height: 'auto' }} alt='Logo Rinjani Culutre' className="h-auto aspect-auto" />
@@ -61,7 +59,7 @@ const Navbar = () => {
               : <List size={32} />
           }
         </button>
-        <div className={`md:static md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-4 py-4 md:py-0 md:px-0 h-screen md:h-auto ${!isOpen ? 'absolute left-full top-[76px] w-full' : 'absolute left-0 top-[76px] w-full'}`}>
+        <div className={`md:static fixed md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-4 py-4 md:py-0 md:px-0 h-screen md:h-auto ${!isOpen ? 'left-full top-[76px] w-full' : 'absolute left-0 top-[76px] w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
             <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>
