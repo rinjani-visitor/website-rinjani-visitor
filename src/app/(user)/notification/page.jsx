@@ -1,9 +1,7 @@
-"use client"
-
-import { useEffect, useState } from 'react';
 import NotifCard from "@/components/notif/NotifCard";
 import getBaseURL from "@/libs/getBaseURL";
 import { getCookie } from "cookies-next";
+import { cookies } from 'next/headers';
 
 const fetchData = async () => {
   try {
@@ -11,7 +9,7 @@ const fetchData = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getCookie('accessToken')}`,
+        'Authorization': `Bearer ${getCookie('accessToken', {cookies} )}`,
       },
     });
 
@@ -21,7 +19,6 @@ const fetchData = async () => {
     }
 
     const data = await response.json();
-    console.log(data);
     return data.data;
   } catch (error) {
     console.error('Error fetching data:', error.message);
@@ -29,21 +26,8 @@ const fetchData = async () => {
   }
 };
 
-const Page = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        // Handle error, if needed
-      }
-    };
-
-    fetchDataAsync();
-  }, []);
+const Page = async () => {
+  const data = await fetchData()
 
   return (
     <div className="mb-12 text-center">

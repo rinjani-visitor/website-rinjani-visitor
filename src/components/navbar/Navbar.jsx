@@ -65,7 +65,7 @@ const Navbar = () => {
               <Link href={`/`}>
                 Home
               </Link>
-              <div className="rounded-full underline group-hover:w-full group-hover:bg-[green]"></div>
+              <div className="rounded-full underline group-hover:w-full group-hover:bg-[green] md:block hidden"></div>
             </li>
             {[
               ['Package', '/packages', 'package'],
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <Link href={url}>
                   {title}
                 </Link>
-                <div className="rounded-full underline group-hover:w-full group-hover:bg-[green]"></div>
+                <div className="rounded-full underline group-hover:w-full group-hover:bg-[green] md:block hidden"></div>
               </li>
             ))}
           </ul>

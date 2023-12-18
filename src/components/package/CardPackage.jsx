@@ -7,7 +7,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 
 const CardPackage = ({ name, price, rating, available, thumbnail, productId, location }) => {
   return (
-    <div className="shadow-md rounded-xl bg-white md:flex h-max">
+    <div className="shadow-md rounded-xl bg-white md:flex h-max select-none">
       <div className="w-5/12 max-sm:w-full max-sm:rounded-t-lg  md:rounded-l-lg overflow-hidden">
         <Image src={thumbnail} alt="Rinjani" width={500} height={500} className="h-full object-cover"/>
       </div>

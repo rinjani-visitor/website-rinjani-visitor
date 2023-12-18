@@ -8,7 +8,7 @@ import { useState } from "react"
 import { getRinjaniCultureAPI } from "@/libs/api"
 import Or from "@/components/Or"
 import { useRouter } from "next/navigation"
-import { getCookie, setCookie } from "cookies-next"
+import { setCookie } from "cookies-next"
 import ForgotPassword from "@/components/auth/ForgotPassword"
 import { ToastContainer, toast } from 'react-toast'
 
@@ -16,8 +16,8 @@ import { ToastContainer, toast } from 'react-toast'
 const Page = () => {
   const router = useRouter()
 
-  const [email, setEmail] = useState('shafa.asyari.02@gmail.com')
-  const [password, setPassword] = useState('qqP7jHjg9DHR')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [isLoad, setIsLoad] = useState(false)
   const [messageError, setMessageError] = useState(null)
 
@@ -49,8 +49,8 @@ const Page = () => {
       const { accessToken, refreshToken } = data
 
       if (response.ok) {
-        setCookie('accessToken', accessToken)
-        setCookie('refreshToken', refreshToken)
+        setCookie('accessToken', accessToken, { maxAge: 3600 })
+        setCookie('refreshToken', refreshToken, { maxAge: 3600 })
         router.push('/')
       } else {
         setMessageError(data.errors)

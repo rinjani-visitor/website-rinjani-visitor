@@ -16,7 +16,7 @@ const Footer = () => {
           <Image src={`https://utfs.io/f/f101327d-61f5-4453-8e9d-d0d56945b816-s4hkpl.png`} width={300} height={200} style={{ width: '152px', height: 'auto' }} alt="rijani visitor putih" className="invert brightness-0" />
           {/* <img src="assets/svg/logo.svg" alt="" class="invert brightness-0"> */}
           <p className="text-sm font-light md:w-3/4">
-            Welcome to Rinjani Culture, the gateway to the breathtaking beauty of nature, the wisdom of local culture, and the wonders of Mount Rinjani in Senaru!
+            Welcome to Rinjani Visitor, the gateway to the breathtaking beauty of nature, the wisdom of local culture, and the wonders of Mount Rinjani in Senaru!
           </p>
           <p>
             <Link href="mailto:rinjani-visitor@gmail.com" className="text-sm">rinjanivisitor@gmail.com</Link>
@@ -58,14 +58,12 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-3">
-            <h3 className="text-base font-medium">Menu</h3>
+            <h3 className="text-base font-medium">Social Media</h3>
             <ul className="text-sm space-y-2 font-light">
               {[
-                ['Home', '/'],
-                ['Package', '/'],
-                ['Home Stay', '/'],
-                ['Event', '/'],
-                ['Wish List', '/'],
+                ['Instagram', '/'],
+                ['WhatsApp', '/'],
+                ['Youtube', '/'],
               ].map(([title, url]) => (
                 <li key={title}>
                   <Link href={url}>

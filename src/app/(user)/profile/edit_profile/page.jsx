@@ -56,7 +56,7 @@ const Page = () => {
       </div>
       <form className="space-y-4">
         <InputFormSign
-          title={`Username`}
+          title={`Name`}
           type={`text`}
           value={data?.name}
           method={handlerUserName}

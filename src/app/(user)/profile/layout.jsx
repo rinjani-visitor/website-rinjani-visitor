@@ -1,9 +1,6 @@
 'use client'
 import SideBarMenu from "@/components/profile/SideBarMenu"
 import { usePathname } from "next/navigation"
-import imagePotrait from '/public/assets/potrait.jpg'
-import Image from "next/image"
-import Profile from "@/components/profile/Profile"
 
 const Layout = ({ children }) => {
   const path = usePathname();
@@ -27,7 +24,6 @@ const Layout = ({ children }) => {
       </div>
       <section className="grid grid-cols-3">
         <div>
-          <Profile />
           <SideBarMenu />
         </div>
         {children}
