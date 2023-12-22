@@ -33,7 +33,7 @@ const Page = async () => {
     <div className="mb-12 text-center">
       <div className="container">
         <div className="text-center mb-4">
-          <h1 className="font-semibold text-3xl text-[green]">Notification</h1>
+          <h1 className="font-semibold text-3xl text-[green]">Your Booking History</h1>
           <p className="font-normal">Heres your update</p>
         </div>
         <div className="space-y-4">

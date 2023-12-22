@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toast'
 
 const DetailPackage = ({ id }) => {
+  const [isLoad, setIsLoad] = useState(false)
   const [person, setPerson] = useState(0)
   const [data, setData] = useState([])
   const [selectedValues, setSelectedValues] = useState([]);
@@ -17,8 +18,8 @@ const DetailPackage = ({ id }) => {
   const [time, setTime] = useState(null)
   const [offeringPrice, setOfferingPrice] = useState(null)
   const [like, setLike] = useState(undefined)
-
   const router = useRouter()
+  const cookie = hasCookie('accessToken')
 
   const fetchData = async () => {
     try {
@@ -34,7 +35,6 @@ const DetailPackage = ({ id }) => {
       let { data } = response
       data = data.data
       setData(data)
-      console.log(data);
       setLike(data?.userFavorited)
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -70,7 +70,13 @@ const DetailPackage = ({ id }) => {
   }
 
   const submitBooking = async (event) => {
+    setIsLoad(true)
     event.preventDefault();
+
+    if (!cookie) {
+      router.push('/login')
+      return
+    }
 
     const body = {
       productId: id,
@@ -91,21 +97,19 @@ const DetailPackage = ({ id }) => {
       });
 
       if (!response.ok) {
-        // Handle error response
         throw new Error('Network response was not ok');
       }
 
-      const responseData = await response.json();
-      console.log(responseData);
-
+      const { data } = await response.json();
+      router.push(`/booking/${data.bookingId}`)
     } catch (error) {
       console.error('Error submitting booking:', error);
+    } finally {
+      setIsLoad(false)
     }
   };
 
   const likePackage = async (event) => {
-    const cookie = hasCookie('accessToken')
-
     if (!cookie) {
       router.push('/login')
       return
@@ -136,15 +140,15 @@ const DetailPackage = ({ id }) => {
       <section className="grid grid-cols-2 max-lg:grid-cols-1 max-lg:space-y-4">
         <ToastContainer delay={5000} />
         <div className="space-y-2">
-          <p className="text-sm capitalize max-sm:text-xs text-slate-700">Packages/{data.category}/{data.subCategory}</p>
-          <h1 className="font-semibold text-3xl text-gray-800 max-sm:text-xl max-lg:text-2xl ">{data.title}</h1>
-          <div className="flex space-x-4 text-gray-800 font-normal">
+          <p className="text-base capitalize max-sm:text-xs text-gray-700 font-">Packages/{data.category}/{data.subCategory}</p>
+          <h1 className="font-semibold text-3xl text-gray-700 max-sm:text-xl max-lg:text-2xl ">{data.title}</h1>
+          <div className="flex space-x-4 text-gray-700 font-normal">
             <div className="flex items-center space-x-2"><Star size={24} weight="fill" /> <span>{data.rating}</span></div>
             <div className="flex items-center space-x-2"><MapPin size={24} weight="fill" /> <span>{data.location}</span></div>
           </div>
         </div>
         <div className="flex items-center justify-end space-x-4">
-          <button onClick={likePackage} className="transition-all ease-in-out">
+          <button onClick={likePackage} className="transition-all ease-in-out text-red-600">
             {
               like ?
                 <Heart size={40} weight="fill" />
@@ -153,17 +157,16 @@ const DetailPackage = ({ id }) => {
           </button>
         </div>
       </section>
-
       <section className="grid grid-cols-2 gap-6 max-sm:grid-cols-1">
         <div>
           <CarouselPicture images={data.fotos} />
         </div>
-        <form className="space-y-4" onSubmit={submitBooking}>
-          <div>
+        <form className="" onSubmit={submitBooking}>
+          <div className="mb-4">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Price</h1>
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
-          <div className="flex  w-6/12 space-x-4 max-lg:w-full">
+          <div className="flex w-6/12 space-x-4 max-lg:w-full mb-4">
             <input onChange={handlerDate} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
             <input onChange={handlerTime} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
           </div>
@@ -180,7 +183,7 @@ const DetailPackage = ({ id }) => {
               ))
             }
           </div>
-          <div className="max-sm:space-y-2">
+          <div className="max-sm:space-y-2 mb-4">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Person</h1>
             <div className="flex space-x-4 w-fit max-lg:w-full max-sm:justify-between overflow-hidden justify-center rounded-md">
               <button onClick={handlerReducePerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> - </button>
@@ -188,11 +191,17 @@ const DetailPackage = ({ id }) => {
               <button onClick={handlerAddPerson} className="w-10 max-lg:w-3/12 bg-green-700 hover:bg-green-700 text-white"> + </button>
             </div>
           </div>
-          <div className=" space-y-2">
+          <div className=" space-y-2 mb-4">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input required min={15} type="number" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input Price ($40-$90/person)" onChange={handlerOfferingPrice} />
+            <input required type="number" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input Price ($40-$90/person)" onChange={handlerOfferingPrice} />
           </div>
-          <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">Book Now</button>
+          <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">
+            {
+              isLoad ? (
+                <div className="custom-loader w-8 h-8 mx-auto"></div>
+              ) : "Booking"
+            }
+          </button>
         </form>
       </section>
 
@@ -221,9 +230,7 @@ const DetailPackage = ({ id }) => {
                 }
               </ul>
             </div>
-
           </div>
-
         </div>
         <div className="space-y-4 p-4 bg-white rounded-md shadow-md">
           <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Review</h1>
@@ -236,10 +243,6 @@ const DetailPackage = ({ id }) => {
                 : (<p>No one review</p>)
             }
           </div>
-
-          {/* <CardReview />
-              <CardReview />
-              <CardReview /> */}
         </div>
       </section>
     </div >

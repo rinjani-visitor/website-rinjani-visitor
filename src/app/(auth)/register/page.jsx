@@ -30,7 +30,7 @@ const Page = () => {
   const successInfo = messageSuccess ?
     (
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200" role="alert">
-        <span class="font-medium">Success alert!</span> {messageSuccess}
+        <span class="font-medium">Create Account Success! </span> {messageSuccess}
       </div>
     )
     : null

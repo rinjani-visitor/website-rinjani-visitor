@@ -62,11 +62,11 @@ const Page = () => {
         setMessageError(data.message)
       }
 
-      console.log(messageError);
-
     } catch (error) {
       console.error('Error during fetch:', error);
     } finally {
+      setNewPassword('')
+      setConfirmNewPassword('')
       setIsLoading(false)
     }
   }

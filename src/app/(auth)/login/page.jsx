@@ -49,8 +49,8 @@ const Page = () => {
       const { accessToken, refreshToken } = data
 
       if (response.ok) {
-        setCookie('accessToken', accessToken, { maxAge: 3600 })
-        setCookie('refreshToken', refreshToken, { maxAge: 3600 })
+        setCookie('accessToken', accessToken, { maxAge: 3600*12 })
+        setCookie('refreshToken', refreshToken, { maxAge: 3600*12 })
         router.push('/')
       } else {
         setMessageError(data.errors)
