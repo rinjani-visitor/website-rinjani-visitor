@@ -18,6 +18,7 @@ main {
   .active_navigation_bar {
     @apply font-bold
   }
+
 }
 
 #image-login {
@@ -33,8 +34,8 @@ main {
   /* height: 40px; */
   border-radius: 50%;
   background:
-    radial-gradient(farthest-side, green 94%, #0000) top/8px 8px no-repeat,
-    conic-gradient(#0000 30%, green);
+    radial-gradient(farthest-side, white 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, white);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: s3 0.5s infinite linear;
 }
@@ -117,4 +118,12 @@ main {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
+}
+
+.swal-button {
+  background-color: #32823A !important;
+}
+
+.swal-button:hover {
+  background-color: #57a05e !important;
 }

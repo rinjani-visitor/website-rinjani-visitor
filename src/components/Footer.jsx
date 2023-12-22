@@ -10,7 +10,7 @@ const Footer = () => {
   const isLoginRegister = path === '/login' || path === '/register'
 
   return (
-    <footer className={`mt-4 text-white flex-col bg-[#68AB6F] ${isLoginRegister ? 'hidden' : ''}`}>
+    <footer className={`mt-4 text-white flex-col bg-rinjaniVisitor-green ${isLoginRegister ? 'hidden' : ''}`}>
       <div className="container grid md:grid-cols-2 py-8 space-y-2 md:space-y-0">
         <div className="md:space-y-6 space-y-3">
           <Image src={`https://utfs.io/f/f101327d-61f5-4453-8e9d-d0d56945b816-s4hkpl.png`} width={300} height={200} style={{ width: '152px', height: 'auto' }} alt="rijani visitor putih" className="invert brightness-0" />

@@ -31,13 +31,12 @@ const DeleteAccount = () => {
       if (response.ok) {
         deleteCookie('accessToken')
         deleteCookie('refreshToken')
-        setTimeout(() => {
-          router.push('/')
-        }, 5000)
+        router.push('/')
       }
     } catch (error) {
       toast.error('Error deleting account');
     } finally {
+      router.push('/')
       setIsLoad(false)
     }
   }
@@ -45,7 +44,7 @@ const DeleteAccount = () => {
   return (
     <div className="">
       <ToastContainer delay={5000} />
-      <div className={`top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} absolute transition-opacity duration-300 z-[99] overflow-hidden`}>
+      <div className={`top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} fixed transition-opacity duration-300 z-[99] overflow-hidden`}>
         <div className="bg-white max-w-lg w-full px-6 py-4 rounded-md">
           <h1 className="text-center text-2xl font-medium">Are You Sure to Delete this Account?</h1>
           <div className='mt-4 w-fit space-x-3 ml-auto justify-between flex'>

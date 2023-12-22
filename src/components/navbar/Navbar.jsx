@@ -61,7 +61,7 @@ const Navbar = () => {
         </button>
         <div className={`md:static fixed md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-4 py-4 md:py-0 md:px-0 h-screen md:h-auto ${!isOpen ? 'left-full top-[76px] w-full' : 'absolute left-0 top-[76px] w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
-            <li className={`text-green-500 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
+            <li className={`text-green-700 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
               <Link href={`/`}>
                 Home
               </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
               ['Event', '/event', 'event'],
               ['Wish List', '/wishlist', 'wishlist'],
             ].map(([title, url, id]) => (
-              <li key={id} className={`text-green-500 hover:text-green-700 link ${path.includes(id) ? 'active_link text-green-700 font-bold' : ''} group `}>
+              <li key={id} className={`text-green-700 hover:text-green-700 link ${path.includes(id) ? 'active_link text-green-700 font-bold' : ''} group `}>
                 <Link href={url}>
                   {title}
                 </Link>

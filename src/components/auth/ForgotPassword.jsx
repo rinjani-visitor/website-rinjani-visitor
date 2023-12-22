@@ -62,7 +62,7 @@ const ForgotPassword = () => {
   return (
     <>
       <p onClick={handlerModal} className='cursor-pointer font-normal'>Forgot Password</p>
-      <div className={`top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} absolute transition-opacity duration-300`}>
+      <div className={`top-0 left-0 p-4 w-full h-full flex justify-center items-center bg-black bg-opacity-80 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} absolute transition-opacity duration-300`}>
         <ToastContainer delay={5000} />
         <div className='bg-white max-w-lg w-full px-6 py-4 rounded-md space-y-4 content-center'>
           <h1 className='text-2xl text-slate-700 font-semibold text-center'>Input Your Email to Receive a New Password for Login</h1>

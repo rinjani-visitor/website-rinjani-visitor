@@ -17,7 +17,7 @@ export default async function CardPackageList({ data }) {
           />
         ))
       ) : (
-        <p>Paket tidak tersedia</p>
+        <p>Package Unavailable</p>
       )}
     </div>
   )

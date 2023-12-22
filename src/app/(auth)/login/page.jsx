@@ -49,8 +49,8 @@ const Page = () => {
       const { accessToken, refreshToken } = data
 
       if (response.ok) {
-        setCookie('accessToken', accessToken, { maxAge: 3600*12 })
-        setCookie('refreshToken', refreshToken, { maxAge: 3600*12 })
+        setCookie('accessToken', accessToken, { maxAge: 3600 })
+        setCookie('refreshToken', refreshToken, { maxAge: 3600 })
         router.push('/')
       } else {
         setMessageError(data.errors)
@@ -94,7 +94,7 @@ const Page = () => {
               {/* <Link href='/' className="font-semibold">Forgot Password?</Link> */}
             </div>
             <div>
-              <button className={`font-medium text-base w-full ${isLoad ? 'bg-slate-300' : "bg-green-500 hover:bg-green-600"} h-10 transition rounded-lg text-white`}>
+              <button className={`font-medium text-base w-full bg-green-600 hover:bg-rinjaniVisitor-green h-10 transition rounded-lg text-white`}>
                 {
                   isLoad ? (
                     <div className="custom-loader w-6 h-6 mx-auto"></div>

@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       : subTitle = 'Your Orders History'
 
   return (
-    <div className="container">
+    <div className="container mb-10">
       <div className="text-center mb-16">
         <h1 className="font-semibold text-3xl text-[green]">{title}</h1>
         <p className="font-normal">{subTitle}</p>

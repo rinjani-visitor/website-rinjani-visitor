@@ -10,6 +10,7 @@ import { analytics } from "@/app/firebase/firebase-config"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/navigation"
 import { ToastContainer, toast } from 'react-toast'
+import swal from 'sweetalert';
 
 
 const Page = () => {
@@ -17,9 +18,18 @@ const Page = () => {
   const [name, setName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [country, setCountry] = useState("")
+  const [avatarUrl, setAvaterUrl] = useState("")
   const [file, setFile] = useState(null)
+  const [isLoad, setIsLoad] = useState(false)
+  const [message, setMessage] = useState('')
 
   const router = useRouter()
+
+  const infoSuccess = message ? (
+    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200" role="alert">
+      {message}.
+    </div>
+  ) : null
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +51,7 @@ const Page = () => {
         setName(data.name);
         setCountry(data.country);
         setPhoneNumber(data.phoneNumber);
-        console.log(data);
+        setAvaterUrl(data.profilPicture)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -63,13 +73,13 @@ const Page = () => {
   }
 
   const updateUser = async (event) => {
+    setIsLoad(true)
     event.preventDefault()
-    console.log(file);
     if (file) {
       const fileRef = ref(analytics, `rinjanivisitor/${file.name}`);
       uploadBytes(fileRef, file).then((data) => {
         getDownloadURL(data.ref).then(async (url) => {
-          console.log("url", url);
+          setAvaterUrl(url)
 
           const body = {
             name: name === data?.name ? undefined : name,
@@ -77,8 +87,6 @@ const Page = () => {
             country: country === data?.country ? undefined : country,
             profilPicture: url
           }
-
-          console.log(body);
 
           try {
             const response = await fetch(getBaseURL('users'), {
@@ -90,18 +98,16 @@ const Page = () => {
               body: JSON.stringify(body)
             });
 
-            console.log(response);
-
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
 
-            const result = await response.json();
-            console.log(result);
-
+            setMessage("Success Updated Profile")
             router.refresh()
           } catch (error) {
             toast.error(error.message)
+          } finally {
+            setIsLoad(false)
           }
         });
       });
@@ -122,20 +128,25 @@ const Page = () => {
           body: JSON.stringify(body)
         });
 
-        console.log(response);
+        const data = await response.json()
+
+        if (data.message === 'No data to update') {
+          swal("No data change", "Yout data is up to date", "warning");
+        }
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
-        const result = await response.json();
-        console.log(result);
-
+        setMessage("Success Updated Profile")
         router.refresh()
       } catch (error) {
         toast.error(error.message)
+      } finally {
+        setIsLoad(false)
       }
     }
+
   }
 
   return (
@@ -144,7 +155,7 @@ const Page = () => {
       <div className="space-y-3">
         <p>My Avatar (max. 2MB)</p>
         <div className="rounded-full aspect-square h-28 bg-white mb-6 overflow-hidden">
-          <Image src={data?.profilPicture} width={200} height={200} alt='...' />
+          <Image src={avatarUrl} width={200} height={200} alt='...' />
         </div>
         <input
           accept=".jpg, .jpeg, .png"
@@ -164,10 +175,14 @@ const Page = () => {
         <InputFormSign title={`Email`} type={`email`} value={data?.email} disabled={true} />
         <InputFormSign title={`Phone Number`} type={`tel`} value={phoneNumber} method={handlerPhoneNumber} />
         <SelectCountry value={country} method={handlerCountry} />
-        <div className="flex justify-between space-x-2">
-          <button className="border w-full font-medium rounded-md h-10 text-red-500">Cancel</button>
-          <button type="submit" className="border w-full font-medium rounded-md h-10 text-white bg-green-700 hover:bg-green-800">Update</button>
-        </div>
+        {infoSuccess}
+        <button type="submit" className={`w-full font-medium rounded-md h-10 bg-rinjaniVisitor-green text-white `}>
+          {
+            isLoad ? (
+              <div className="custom-loader w-6 h-6 mx-auto"></div>
+            ) : "Update"
+          }
+        </button>
       </form>
     </div>
   )

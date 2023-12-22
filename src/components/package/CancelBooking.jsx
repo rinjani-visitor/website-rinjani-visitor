@@ -36,7 +36,7 @@ const CancelBooking = ({ id }) => {
   return (
     <>
       <button type="button" className="text-red-600 text-sm hover:underline" onClick={() => setisOpen(!isOpen)}>Cancel this Booking</button>
-      <div className={`absolute w-full h-screen left-0 top-0 z-[9999] justify-center items-center bg-black bg-opacity-80 ${isOpen ? "flex" : "hidden"}`}>
+      <div className={`fixed w-full h-screen left-0 top-0 z-[9999] justify-center items-center bg-black bg-opacity-80 ${isOpen ? "flex" : "hidden"}`}>
         <div className="bg-white p-4 max-w-md w-full rounded-md">
           <h1 className="text-center text-xl font-medium">Are You Sure to Cancel this Booking?</h1>
           <div className="flex justify-end space-x-4 mt-2">
