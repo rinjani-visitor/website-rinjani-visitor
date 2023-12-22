@@ -38,6 +38,8 @@ const Page = () => {
 
   const handlerRegister = async (event) => {
     setIsLoad(true)
+    setMessageError('')
+    setMessageSuccess('')
     event.preventDefault()
     const body = {
       name: username,
