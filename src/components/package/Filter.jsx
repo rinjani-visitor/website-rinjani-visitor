@@ -38,10 +38,12 @@ export default function Filter({
 
   return (
     <div className="space-y-4 xl:w-56">
+      <h1 className="text-lg font-medium text-rinjaniVisitor-green">Select Filter</h1>
+      
       {
         path === "/packages" ?
           <select className='w-full appearance-none py-1 px-2.5 rounded-md focus:outline-rinjaniVisitor-green md:text-base text-sm' value={category} onChange={onCategoryChange}>
-            <option value="" disabled className="">Select Category Filter</option>
+            <option value="" className="">All Category</option>
             {
               categoryFilter.map((item, index) => (
                 <option className="" key={index} value={item.value}>{item.label}</option>
@@ -52,7 +54,7 @@ export default function Filter({
       }
 
       <select className='w-full appearance-none py-1 px-2.5 rounded-md focus:outline-rinjaniVisitor-green md:text-base text-sm' value={rating} onChange={onRatingChange}>
-        <option value="" disabled>Select Rating Filter</option>
+        <option value="">All Rating</option>
         {
           ratingFilter.map((item, index) => (
             <option key={index} value={item.value}>{item.label}</option>
@@ -61,7 +63,7 @@ export default function Filter({
       </select>
 
       <select className='w-full appearance-none py-1 px-2.5 rounded-md focus:outline-rinjaniVisitor-green md:text-base text-sm' value={status} onChange={onStatusChange}>
-        <option value="" disabled>Select Status Filter</option>
+        <option value="" >All Status</option>
         {
           statusFilter.map((item, index) => (
             <option key={index} value={item.value}>{item.label}</option>

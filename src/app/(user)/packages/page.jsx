@@ -23,7 +23,7 @@ const Page = () => {
   const [data, setData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedRating, setSelectedRating] = useState('')
-  const [selectedStatus, setSelectedStatus] = useState(true)
+  const [selectedStatus, setSelectedStatus] = useState('')
 
   const handleCategory = (event) => {
     setSelectedCategory(event.target.value);
