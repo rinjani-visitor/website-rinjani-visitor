@@ -12,7 +12,7 @@ const CardReview = ({ name, body, country, imageProfile, timestamp, rating }) =>
         <div className=" w-full">
           <h4 className="text-xl font-bold">{name}</h4>
           <p className="text-sm">{country}</p>
-          <div className="flex  space-x-2">
+          <div className="flex justify-between space-x-2">
             <ReactStars
               edit={false}
               value={rating}
