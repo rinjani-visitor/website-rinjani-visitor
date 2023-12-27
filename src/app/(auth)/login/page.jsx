@@ -106,13 +106,6 @@ const Page = () => {
 
           <Or />
 
-          <div className="flex items-center space-x-2 justify-center">
-            <Image src='/google.svg' width={28} height={28} alt="Google" />
-            <p className="font-normal">
-              Register with Google
-            </p>
-          </div>
-
           <p className="font-normal text-center">Don`t have an account ? <Link href="/register" className="font-semibold">Register</Link></p>
         </div>
       </div>

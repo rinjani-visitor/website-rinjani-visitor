@@ -207,19 +207,15 @@ const DetailPackage = ({ id }) => {
 
       <section className="grid grid-cols-1 space-y-4">
         <div className="space-y-4 shadow-md p-4 bg-white rounded-md">
-
           <div className="">
             <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Description</h1>
             <p className=" max-sm:text-sm text-slate-900">{data.description}</p>
           </div>
+          <div className="">
+            <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Noted</h1>
+            <p className=" max-sm:text-sm text-slate-900">{data.note}</p>
+          </div>
           <div className="max-lg:flex max-lg:space-x-10 xl:space-y-4">
-            <div>
-              <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Itenary</h1>
-              <ul className="list-none list-inside">
-                <li>Lorem</li>
-                <li>Lorem</li>
-              </ul>
-            </div>
             <div>
               <h1 className="font-semibold text-2xl max-sm:text-lg text-green-700">Facility</h1>
               <ul className="list-none list-inside">
