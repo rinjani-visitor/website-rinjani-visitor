@@ -52,13 +52,24 @@ const Navbar = () => {
         <Link href="/">
           <Image priority={true} src={`https://utfs.io/f/874d963c-d788-4fd2-98c4-8c8305fbde37-1qwd.png`} width={300} height={200} style={{ width: '104px', height: 'auto' }} alt='Logo Rinjani Culutre' className="h-auto aspect-auto" />
         </Link>
-        <button onClick={() => setIsOpen(!isOpen)} className="text-green-700 transition md:hidden flex">
+        <div className="flex space-x-4 items-center justify-between">
           {
-            isOpen ?
-              <X size={32} />
-              : <List size={32} />
+            isLogin ?
+              (
+                <div className="md:hidden flex">
+                  <IsLogin logoutCallBack={getToken} />
+                </div>
+              )
+              : null
           }
-        </button>
+          <button onClick={() => setIsOpen(!isOpen)} className="text-green-700 transition md:hidden flex">
+            {
+              isOpen ?
+                <X size={32} />
+                : <List size={32} />
+            }
+          </button>
+        </div>
         <div className={`md:static fixed md:flex md:flex-1 w-full justify-between items-center transition-all ease-in-out duration-300 bg-rinjani-visitor md:bg-none px-4 py-4 md:py-0 md:px-0 h-screen md:h-auto ${!isOpen ? 'left-full top-[76px] w-full' : 'absolute left-0 top-[76px] w-full'}`}>
           <ul className={`flex md:flex-row flex-col font-medium space-y-2 md:space-y-0 md:space-x-5`}>
             <li className={`text-green-700 hover:text-green-700 link ${path === '/' ? 'active_link text-green-700 font-bold' : ''} group `}>
@@ -86,7 +97,11 @@ const Navbar = () => {
             <SearchInput />
             {
               isLogin ?
-                <IsLogin logoutCallBack={getToken} />
+                (
+                  <div className="md:flex hidden">
+                    <IsLogin logoutCallBack={getToken} />
+                  </div>
+                )
                 : <LoginRegisterButton />
             }
           </div>

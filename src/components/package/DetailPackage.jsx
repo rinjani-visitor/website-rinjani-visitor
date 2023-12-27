@@ -16,6 +16,10 @@ const DetailPackage = ({ id }) => {
   const [selectedValues, setSelectedValues] = useState([]);
   const [date, setDate] = useState(null)
   const [time, setTime] = useState(null)
+
+  const [endDate, setEndDate] = useState('')
+  const [endTime, setEndTime] = useState('')
+
   const [offeringPrice, setOfferingPrice] = useState(null)
   const [like, setLike] = useState(undefined)
   const router = useRouter()
@@ -34,6 +38,7 @@ const DetailPackage = ({ id }) => {
       )
       let { data } = response
       data = data.data
+      console.log(data);
       setData(data)
       setLike(data?.userFavorited)
     } catch (error) {
@@ -81,7 +86,7 @@ const DetailPackage = ({ id }) => {
     const body = {
       productId: id,
       startDateTime: `${date} ${time}`,
-      addOns: selectedValues.join(', '),
+      addOns: selectedValues ? selectedValues.join(', ') : undefined,
       offeringPrice: offeringPrice,
       totalPersons: `${person}`
     };
