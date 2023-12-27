@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 export default function RootLayout({ children }) {
   return (
     <section className="flex flex-col min-h-screen">
-      <ButtonScrollTop />
+      {/* <ButtonScrollTop /> */}
       <Navbar />
       <main>
         {children}
