@@ -18,6 +18,7 @@ const Page = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [messageError, setMessageError] = useState(null)
   const [messageSuccess, setMessageSuccess] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
 
   const errorInfo = messageError ?
     (
@@ -37,10 +38,15 @@ const Page = () => {
 
 
   const handlerRegister = async (event) => {
+    event.preventDefault()
     setIsLoad(true)
+    if (password !== confirmPassword) {
+      setMessageError('Password not Match')
+      setIsLoad(false)
+      return
+    }
     setMessageError('')
     setMessageSuccess('')
-    event.preventDefault()
     const body = {
       name: username,
       email: email,
@@ -56,18 +62,16 @@ const Page = () => {
         },
         body: JSON.stringify(body)
       })
-      console.log(response);
-
       const data = await response.json()
-      console.log(data);
       if (response.ok) {
         setMessageSuccess(data.message)
       } else {
         setMessageError(data.errors)
       }
-      setIsLoad(false)
     } catch (error) {
       console.error('Error during register:', error);
+    } finally {
+      setIsLoad(false)
     }
   }
 
@@ -104,13 +108,19 @@ const Page = () => {
               <InputFormSign title={'Name'} type={'text'} placeholder={`Input Name`} method={onHandlerUsername} />
               <InputFormSign title={'Email'} type={'email'} placeholder={`Input Email`} method={onHandlerEmail} />
               <SelectCountry method={onHandlerCountry} value={country} />
-              <InputFormSign title={'Password'} type={'password'} placeholder={`Input Password`} method={onHandlerPassword} />
-              <InputFormSign title={'Confirm Password'} type={'password'} placeholder={`Input Confirm Password`} method={onHandlerConfirmPassword} />
+              <InputFormSign title={'Password'} type={`${showPassword ? 'text' : 'password'}`} placeholder={`Input Password`} method={onHandlerPassword} />
+              <InputFormSign title={'Confirm Password'} type={`${showPassword ? 'text' : 'password'}`} placeholder={`Input Confirm Password`} method={onHandlerConfirmPassword} />
               {errorInfo}
               {successInfo}
+              <div className="space-x-2 flex items-center">
+                <label className="flex items-center space-x-2 select-none" htmlFor="show">
+                  <input id="show" type="checkbox" className="h-4 w-4" onChange={() => setShowPassword(!showPassword)} />
+                  <p>Show Password</p>
+                </label>
+              </div>
             </div>
             <div>
-              <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">
+              <button className="font-medium text-base w-full bg-rinjaniVisitor-green hover:bg-green-800 h-10 transition rounded-lg text-white">
                 {
                   isLoad ?
                     (

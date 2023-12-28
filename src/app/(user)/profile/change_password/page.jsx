@@ -10,6 +10,7 @@ const Page = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('')
   const [messageError, setMessageError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const errorInfo = messageError.includes('password most be at least 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 symbol') ?
     (
@@ -74,9 +75,13 @@ const Page = () => {
   return (
     <div>
       <form className="space-y-4" onSubmit={submitUpdatePassword}>
-        <InputFormSign title={`New Password`} type={`password`} value={newPassword} method={handlerNewPassword} />
-        <InputFormSign title={`Confirm New Password`} type={`password`} value={confirmNewPassword} method={handlerConfirmNewPassword} />
+        <InputFormSign title={`New Password`} type={`${showPassword ? 'text' : 'password'}`} value={newPassword} method={handlerNewPassword} />
+        <InputFormSign title={`Confirm New Password`} type={`${showPassword ? 'text' : 'password'}`} value={confirmNewPassword} method={handlerConfirmNewPassword} />
         {errorInfo}
+        <label className="flex items-center space-x-2 select-none" htmlFor="show">
+          <input id="show" type="checkbox" className="h-4 w-4" onChange={() => setShowPassword(!showPassword)} />
+          <p>Show Password</p>
+        </label>
         <div>
           <button className="font-medium text-base w-full bg-green-500 hover:bg-green-600 h-10 transition rounded-lg text-white">
             {

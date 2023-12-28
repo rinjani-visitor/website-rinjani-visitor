@@ -20,6 +20,7 @@ const Page = () => {
   const [password, setPassword] = useState('')
   const [isLoad, setIsLoad] = useState(false)
   const [messageError, setMessageError] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
 
   const errorToast = () => toast.error('Internal Server Error')
 
@@ -82,13 +83,13 @@ const Page = () => {
           <form className="space-y-8" onSubmit={handleLogin}>
             <div className="space-y-6">
               <InputFormSign value={email} title={`Email`} type={`email`} placeholder={`Input Email`} method={onHandlerEmail} />
-              <InputFormSign value={password} title={`Password`} type={`password`} placeholder={`Input Password`} method={onHandlerPassword} />
+              <InputFormSign value={password} title={`Password`} type={`${showPassword ? 'text' : 'password'}`} placeholder={`Input Password`} method={onHandlerPassword} />
               {errorInfo}
             </div>
             <div className="flex justify-between items-center">
-              <label className="flex items-center space-x-2">
-                <input type="checkbox" className="h-4 w-4" />
-                <p>Remember me</p>
+              <label className="flex items-center space-x-2 select-none" htmlFor="show">
+                <input id="show" type="checkbox" className="h-4 w-4" onChange={() => setShowPassword(!showPassword)} />
+                <p>Show Password</p>
               </label>
               <ForgotPassword />
               {/* <Link href='/' className="font-semibold">Forgot Password?</Link> */}

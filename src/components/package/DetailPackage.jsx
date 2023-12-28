@@ -38,9 +38,9 @@ const DetailPackage = ({ id }) => {
       )
       let { data } = response
       data = data.data
-      console.log(data);
       setData(data)
       setLike(data?.userFavorited)
+      console.log(data.status);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -52,7 +52,9 @@ const DetailPackage = ({ id }) => {
 
   const handlerAddPerson = (event) => {
     event.preventDefault()
-    setPerson(person + 1)
+    person != 20 ?
+      setPerson(person + 1)
+      : setPerson(person)
   }
 
   const handlerReducePerson = (event) => {
@@ -172,22 +174,29 @@ const DetailPackage = ({ id }) => {
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
           <div className="flex w-6/12 space-x-4 max-lg:w-full mb-4">
-            <input onChange={handlerDate} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
-            <input onChange={handlerTime} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
+            <input onChange={handlerDate} min={new Date().toISOString().split('T')[0]} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
+            <input onChange={handlerTime} step={'18'} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
           </div>
-          <div className="flex flex-wrap">
-            {
-              data.addOns?.map((item, index) => (
-                <CheckboxButtonAddOn
-                  key={index}
-                  id={item}
-                  label={item}
-                  selectedValues={selectedValues}
-                  setSelectedValues={setSelectedValues}
-                />
-              ))
-            }
-          </div>
+          {
+            data.addOns && data.addOns.length > 0 ? (
+              <div>
+                <h1 className="text-lg mb-2 font-medium text-rinjaniVisitor-green/90">Add Ons</h1>
+                <div className="flex flex-wrap">
+                  {
+                    data.addOns?.map((item, index) => (
+                      <CheckboxButtonAddOn
+                        key={index}
+                        id={item}
+                        label={item}
+                        selectedValues={selectedValues}
+                        setSelectedValues={setSelectedValues}
+                      />
+                    ))
+                  }
+                </div>
+              </div>
+            ) : null
+          }
           <div className="max-sm:space-y-2 mb-4">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Person</h1>
             <div className="flex space-x-4 w-fit max-lg:w-full max-sm:justify-between overflow-hidden justify-center rounded-md">
@@ -198,9 +207,10 @@ const DetailPackage = ({ id }) => {
           </div>
           <div className=" space-y-2 mb-4">
             <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">Offering Price</h1>
-            <input required type="number" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Input Price ($40-$90/person)" onChange={handlerOfferingPrice} />
+            <input required min={person > 1 ? (data.lowestPrice * 0.8) * person : data.lowestPrice} type="number" className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white" placeholder="Enter a offer price (minimum 80% of total)"
+              onChange={handlerOfferingPrice} />
           </div>
-          <button type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white">
+          <button disabled={data.status ? isLoad : !data.status} type="submit" className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white disabled:bg-slate-400">
             {
               isLoad ? (
                 <div className="custom-loader w-8 h-8 mx-auto"></div>
