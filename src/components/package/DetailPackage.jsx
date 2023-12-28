@@ -174,8 +174,8 @@ const DetailPackage = ({ id }) => {
             <p className="text-2xl font-semibold text-rinjaniVisitor-green">Start from ${data.lowestPrice}/person</p>
           </div>
           <div className="flex w-6/12 space-x-4 max-lg:w-full mb-4">
-            <input onChange={handlerDate} min={new Date().toISOString().split('T')[0]} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
-            <input onChange={handlerTime} step={'18'} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
+            <input required onChange={handlerDate} min={new Date().toISOString().split('T')[0]} type="date" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
+            <input required onChange={handlerTime} type="time" name="daterange" className="border border-green-700 p-2 rounded-md bg-white w-full" />
           </div>
           {
             data.addOns && data.addOns.length > 0 ? (

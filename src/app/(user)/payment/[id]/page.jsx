@@ -105,6 +105,7 @@ const Page = ({ params }) => {
 
             if (!response.ok) {
               setMessageError('Please Update Payment Method!')
+              return
             }
 
             router.push(`/booking/${id}`)
