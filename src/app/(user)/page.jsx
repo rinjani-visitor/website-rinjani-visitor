@@ -73,11 +73,11 @@ const Page = () => {
         <p className="text-sm md:text-xl text-center">Explore rinjani mountain and feel to live with local people</p>
         <div className="grid md:grid-cols-2">
           <div className="relative">
-            <Image src={`/assets/1.png`} width={500} height={500} alt="asdasd"/>
-            <Image src={`/assets/2.png`} width={500} height={500} alt="asdasd" className="absolute bottom-10 -right-20 h-3/5 object-contain"/>
+            <Image priority src={`/assets/1.png`} width={500} height={500} alt="asdasd"/>
+            <Image priority src={`/assets/2.png`} width={500} height={500} alt="asdasd" className="absolute bottom-10 -right-20 h-3/5 object-contain"/>
           </div>
           <div className="space-y-4">
-            <Image src={`/assets/296.png`} height={500} width={500} alt="how" />
+            <Image priority src={`/assets/296.png`} height={500} width={500} alt="how" />
             <p className="text-end md:text-xl text-lg font-medium w-2/3 ms-auto">We previously opened home stay rentals on <span className="text-rinjaniVisitor-green"> booking.com </span>and have had many customers give good reviews</p>
             <div className="ms-auto w-fit">
               <button className="px-4 py-2 ms-auto rounded-lg text-white bg-green-500">Home Stay</button>
