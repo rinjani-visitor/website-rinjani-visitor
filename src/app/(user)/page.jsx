@@ -1,6 +1,8 @@
+import CardReviewHome from "@/components/CardReviewHome";
 import VideoPlayer from "@/components/VideoPlayer"
 import CardField from "@/components/home/CardField"
 import Image from "next/image"
+import Marquee from "react-fast-marquee";
 
 const Page = () => {
 
@@ -38,16 +40,16 @@ const Page = () => {
           <p className="font-normal text-lg md:text-xl">Committed to providing services <br /> with an exeptional experience</p>
           <div className="grid grid-cols-3 divide-x-2 divide-slate-300 text-center">
             <div className="space-y-2">
-              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32] ">21</h3>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32] ">23</h3>
               <p className="md:text-base text-sm font-normal">Package Available</p>
             </div>
             <div className="space-y-2">
-              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">21</h3>
-              <p className="md:text-base text-sm font-normal">Package Available</p>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">18</h3>
+              <p className="md:text-base text-sm font-normal">Home Stay</p>
             </div>
             <div className="space-y-2">
-              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">21</h3>
-              <p className="md:text-base text-sm font-normal">Package Available</p>
+              <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">3</h3>
+              <p className="md:text-base text-sm font-normal">Year Operation</p>
             </div>
           </div>
           <button className="px-4 py-2 rounded-lg text-white bg-rinjaniVisitor-green text-center w-full md:w-auto">Continue to explore</button>
@@ -66,15 +68,38 @@ const Page = () => {
         </div>
       </section>
 
-      {/* <section className="">
-        <h1>Trip Package</h1>
-        <p>Let’s start your journey with us to explore the beatiful rinjani</p>
-        <button>See More Packages</button>
-      </section> */}
+      <section className="space-y-4">
+        <h1 className="text-4xl md:text-5xl text-center font-semibold text-green-700">Home Stay</h1>
+        <p className="text-sm md:text-xl text-center">Explore rinjani mountain and feel to live with local people</p>
+        <div className="grid md:grid-cols-2">
+          <div className="relative">
+            <Image src={`/assets/1.png`} width={500} height={500} alt="asdasd"/>
+            <Image src={`/assets/2.png`} width={500} height={500} alt="asdasd" className="absolute bottom-10 -right-20 h-3/5 object-contain"/>
+          </div>
+          <div className="space-y-4">
+            <Image src={`/assets/296.png`} height={500} width={500} alt="how" />
+            <p className="text-end md:text-xl text-lg font-medium w-2/3 ms-auto">We previously opened home stay rentals on <span className="text-rinjaniVisitor-green"> booking.com </span>and have had many customers give good reviews</p>
+            <div className="ms-auto w-fit">
+              <button className="px-4 py-2 ms-auto rounded-lg text-white bg-green-500">Home Stay</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h1 className="text-4xl md:text-5xl text-center md:text-start font-semibold text-green-700">What our customers say</h1>
+        <p className="text-sm md:text-xl">Let&apos;s feel the same thing as them or even more than them</p>
+        <Marquee className="flex gap-10" speed={100} autoFill={true}>
+          <CardReviewHome body={`A magical natural destination, embracing serenity with enchanting beauty, leaving an unforgettable impression on every visitor.`} name={`Sabrina Car Panther`} country={`Singapore`} />
+          <CardReviewHome body={`This place harmonizes natural beauty and tranquility, offering a perfect holiday experience.`} name={`Clara Insomnia`} country={`Myanmar`} />
+          <CardReviewHome body={`A peaceful natural atmosphere, green expanses, and the blue sky create an irreplaceable serenity`} name={`John Doe`} country={`America`} />
+          <CardReviewHome body={`Nature tourism that offers exciting adventures, adorned with dramatic and unforgettable landscapes.`} name={`Lil Nas`} country={`Brazil`} />
+        </Marquee>
+      </section>
 
       <section className="flex flex-col items-center space-y-4 md:space-y-10 py-10">
-        <h1 className="text-4xl md:text-5xl text-center md:text-start font-semibold text-green-700">What our customers say?</h1>
-        <p className="text-center text-sm md:text-xl font-normal">
+        <h1 className="text-4xl md:text-5xl text-center md:text-start font-semibold text-green-700">What are you waiting for?</h1>
+        <p className="text-center text-sm md:text-xl font-normal md:w-3/5">
           If you want to know more about Rinjani Visitors, you can contact us directly by writing this message
         </p>
         <div className="w-full text-center">

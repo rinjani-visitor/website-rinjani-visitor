@@ -3,11 +3,17 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import imageUrl from '/public/RVPutih1.png';
+import { useState } from "react"
 
 const Footer = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const path = usePathname()
   const isLoginRegister = path === '/login' || path === '/register'
+
+  const handlerModal = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <footer className={`mt-4 text-white flex-col bg-rinjaniVisitor-green ${isLoginRegister ? 'hidden' : ''}`}>
@@ -18,6 +24,23 @@ const Footer = () => {
           <p className="text-sm font-light md:w-3/4">
             Welcome to Rinjani Visitor, the gateway to the breathtaking beauty of nature, the wisdom of local culture, and the wonders of Mount Rinjani in Senaru!
           </p>
+          {/* <button className="bg-black py-2 px-2" onClick={handlerModal}>
+            Contact Admin
+          </button> */}
+          <div className={`fixed w-full h-screen bg-black/80 -top-6 left-0 z-[9999] flex items-center justify-center ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition-opacity duration-300`}>
+            <div className="w-full max-w-2xl bg-white p-4 rounded-md text-black">
+              <h1 className="text-center font-semibold text-xl">Contact Admin</h1>
+              <p className="text-center">Give us your feedback and help us improve our services</p>
+              <form action="" className="grid md:grid-cols-2 gap-4 mt-2">
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, mollitia.
+                </div>
+                <div>
+                  <textarea name="" id="" cols="30" rows="10" className="w-full"></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
           <p>
             <Link href="mailto:rinjani-visitor@gmail.com" className="text-sm">rinjanivisitor@gmail.com</Link>
           </p>
@@ -44,6 +67,11 @@ const Footer = () => {
           <div className="space-y-3">
             <h3 className="text-base font-medium">Support</h3>
             <ul className="text-sm space-y-2 font-light">
+              <li>
+                <Link href={`https://drive.google.com/file/d/1hqk57AhnryQTwnoJEMXb7z-Qyt_I5jga/view?usp=sharing`} target="_blank">
+                  Get Mobile App
+                </Link>
+              </li>
               {[
                 ['FAQ', '/'],
                 ['Privacy n Policy', '/privacy_policy'],

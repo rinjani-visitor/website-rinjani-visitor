@@ -22,6 +22,7 @@
         "next": "13.5.4",
         "react": "^18",
         "react-dom": "^18",
+        "react-fast-marquee": "^1.6.2",
         "react-responsive-carousel": "^3.2.23",
         "react-select": "^5.8.0",
         "react-stars": "^2.2.5",
