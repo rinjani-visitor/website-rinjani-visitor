@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 
 export default function RootLayout({ children }) {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen overflow-hidden">
       {/* <ButtonScrollTop /> */}
       <Navbar />
       <main>
