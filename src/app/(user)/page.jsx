@@ -73,8 +73,8 @@ const Page = () => {
         <p className="text-sm md:text-xl text-center">Explore rinjani mountain and feel to live with local people</p>
         <div className="grid md:grid-cols-2">
           <div className="relative">
-            <Image priority src={`/assets/1.png`} width={500} height={500} alt="asdasd"/>
-            <Image priority src={`/assets/2.png`} width={500} height={500} alt="asdasd" className="absolute bottom-10 -right-20 h-3/5 object-contain"/>
+            <Image priority src={`/assets/1.png`} width={500} height={500} alt="asdasd" />
+            <Image priority src={`/assets/2.png`} width={500} height={500} alt="asdasd" className="absolute bottom-10 -right-20 h-3/5 object-contain" />
           </div>
           <div className="space-y-4">
             <Image priority src={`/assets/296.png`} height={500} width={500} alt="how" />
@@ -103,7 +103,7 @@ const Page = () => {
           If you want to know more about Rinjani Visitors, you can contact us directly by writing this message
         </p>
         <div className="w-full text-center">
-          <input className="border w-full md:w-3/4 px-6 md:h-20 h-10 md:text-xl rounded-lg md:rounded-2xl focus:outline-none" placeholder="Type here what you need..." />
+          <button className="bg-rinjaniVisitor-green w-full max-w-md p-2 text-white rounded-lg border-8 border-rinjaniVisitor-green/50">Contact Admin</button>
         </div>
       </section>
     </div>

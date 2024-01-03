@@ -1,12 +1,14 @@
 import Link from "next/link"
 import BookingStatus from "../bookingStatus"
+import StarIcon from '@mui/icons-material/Star';
+
 
 export default async function NotifCard({ bookingId, bookingDate, bookingStatus, bookingNote, title, rating, location }) {
   return (
     <div className='bg-green-700 p-4 rounded-lg text-white space-y-4 max-w-3xl mx-auto'>
       <div className='flex space-x-6 items-center justify-between'>
         <h2 className='font-semibold text-xl md:text-3xl'>Status Booking</h2>
-        <BookingStatus status={bookingStatus}/>
+        <BookingStatus status={bookingStatus} />
       </div>
       <p className='font-normal max-sm:text-xs text-left'>{bookingNote}</p>
       <div className='text-slate-200 max-sm:text-xs text-left'>
@@ -17,7 +19,10 @@ export default async function NotifCard({ bookingId, bookingDate, bookingStatus,
         <div>
           <h4 className='text-left font-semibold text-lg max-sm:text-sm'>{title}</h4>
           <div className='flex space-x-2 max-sm:text-xs'>
-            <p>{rating}</p>
+            <p className="flex items-center">{rating}
+              <StarIcon className=" text-yellow-400 ms-1" />
+
+            </p>
             <p>{location}</p>
           </div>
         </div>

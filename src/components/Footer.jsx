@@ -76,6 +76,7 @@ const Footer = () => {
                 ['FAQ', '/'],
                 ['Privacy n Policy', '/privacy_policy'],
                 ['Term of Service', '/'],
+                ['Delete Account', '/delete-account'],
               ].map(([title, url]) => (
                 <li key={title}>
                   <Link href={url}>
