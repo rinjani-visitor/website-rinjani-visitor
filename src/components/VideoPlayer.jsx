@@ -18,7 +18,7 @@ const VideoPlayer = () => {
       className='border-8 md:w-4/5  rounded-3xl overflow-hidden border-rinjaniVisitor-green'
     >
       <YouTube
-        videoId='aA5iDFm7Y8k'
+        videoId='ijhs79_A02E'
         onReady={onReady}
         opts={options}
       />

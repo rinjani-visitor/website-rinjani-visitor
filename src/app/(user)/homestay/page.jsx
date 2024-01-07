@@ -22,7 +22,7 @@ const fetchData = async (category, rating, status, setData) => {
 const Page = () => {
   const [data, setData] = useState([])
   const [selectedRating, setSelectedRating] = useState('')
-  const [selectedStatus, setSelectedStatus] = useState(true)
+  const [selectedStatus, setSelectedStatus] = useState('')
 
   const handleRating = (event) => {
     setSelectedRating(event.target.value)

@@ -22,7 +22,7 @@ const fetchData = async (category, rating, status, setData) => {
 const Page = () => {
   const [data, setData] = useState([])
   const [selectedRating, setSelectedRating] = useState('')
-  const [selectedStatus, setSelectedStatus] = useState(true)
+  const [selectedStatus, setSelectedStatus] = useState('')
 
   const handleRating = (event) => {
     setSelectedRating(event.target.value);
@@ -41,7 +41,7 @@ const Page = () => {
   return (
     <div className="container">
       <div className='w-7/12 max-sm:w-full'>
-        <HeaderPackage title={`Homestay`} subtitle={`Rinjani Visitor is a service to accommodate tourists in enjoying the beauty of Mount Rinjani and the culture of Lombok`} />
+        <HeaderPackage title={`Event`} subtitle={`Rinjani Visitor is a service to accommodate tourists in enjoying the beauty of Mount Rinjani and the culture of Lombok`} />
       </div>
       <div className='xl:flex xl:space-x-6 max-xl:space-y-6'>
         <Filter rating={selectedRating} onRatingChange={handleRating} status={selectedStatus} onStatusChange={handleStatus} >
