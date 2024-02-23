@@ -1,13 +1,11 @@
 const showFormattedDate = (date) => {
   const options = {
+    weekday: "long",
     year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit"
+    month: "long",
+    day: "numeric",
   };
-  const formattedDate = new Date(date).toLocaleDateString("en-US", options).replace(/\//g, '-').replace(',', '');
-  return formattedDate;
+  return new Date(date).toLocaleDateString("en-EN", options);
 };
 
-export { showFormattedDate }
+export { showFormattedDate };

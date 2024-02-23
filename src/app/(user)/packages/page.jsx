@@ -4,16 +4,20 @@ import HeaderPackage from "@/components/HeaderPackage";
 import CardPackageList from "@/components/package/CardPackageList";
 import Filter from "@/components/package/Filter";
 import getBaseURL from "@/libs/getBaseURL";
-import axios from 'axios'
 import { useEffect, useState } from "react";
 
 const fetchData = async (category, rating, status, setData) => {
   try {
-    const response = await axios.get(getBaseURL('products'), {
-      params: { category, rating, status },
+    const response = await fetch(getBaseURL('products', { category: category, rating: rating, status: status }), {
+      cache: "no-store"
     });
-    const { data } = response;
-    setData(data.data);
+
+    const res = await response.json()
+    // const response = await axios.get(getBaseURL('products'), {
+    //   params: { category, rating, status },
+    // });
+    // const { data } = response;
+    setData(res.data);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -42,6 +46,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchData(selectedCategory, selectedRating, selectedStatus, setData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
