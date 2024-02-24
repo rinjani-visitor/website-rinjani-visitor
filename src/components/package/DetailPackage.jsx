@@ -81,10 +81,13 @@ const DetailPackage = ({ id }) => {
     const body = {
       productId: id,
       startDateTime: `${date} ${time}`,
-      addOns: selectedValues ? selectedValues.join(", ") : undefined,
+      endDateTime: endDate && endTime ? `${endDate} ${endTime}` : undefined,
+      addOns: selectedValues.length > 1 ? selectedValues.join(", ") : undefined,
       offeringPrice: offeringPrice,
       totalPersons: `${person}`,
     };
+
+    console.log(body);
 
     try {
       const response = await fetch(getBaseURL("booking"), {
@@ -181,6 +184,9 @@ const DetailPackage = ({ id }) => {
               Start from ${data.lowestPrice}/person
             </p>
           </div>
+          <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">
+            Check-In
+          </h1>
           <div className="flex w-6/12 space-x-4 max-lg:w-full mb-4">
             <input
               required
@@ -198,6 +204,30 @@ const DetailPackage = ({ id }) => {
               className="border border-green-700 p-2 rounded-md bg-white w-full"
             />
           </div>
+          {data.category === "homestay" ? (
+            <>
+              <h1 className="text-lg font-medium text-rinjaniVisitor-green/70">
+                Check-Out
+              </h1>
+              <div className="flex w-6/12 space-x-4 max-lg:w-full mb-4">
+                <input
+                  required
+                  onChange={(e) => setEndDate(e.target.value)}
+                  min={new Date().toISOString().split("T")[0]}
+                  type="date"
+                  name="daterange"
+                  className="border border-green-700 p-2 rounded-md bg-white w-full"
+                />
+                <input
+                  required
+                  onChange={(e) => setEndTime(e.target.value)}
+                  type="time"
+                  name="daterange"
+                  className="border border-green-700 p-2 rounded-md bg-white w-full"
+                />
+              </div>
+            </>
+          ) : null}
           {data.addOns && data.addOns.length > 0 ? (
             <div>
               <h1 className="text-lg mb-2 font-medium text-rinjaniVisitor-green/90">
@@ -251,7 +281,6 @@ const DetailPackage = ({ id }) => {
               }
               type="number"
               className="border border-green-700 bg-transparent py-2 px-3 focus:outline-none rounded-md w-full bg-white"
-              // placeholder="Enter a offer price (minimum 80% of total)"
               placeholder={`Enter a offer price minimum $${
                 person === 1
                   ? data.lowestPrice

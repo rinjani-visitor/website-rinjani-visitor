@@ -77,7 +77,7 @@ const ContactAdmin = () => {
           >
             <div className="flex flex-col justify-between">
               <div>
-                <label className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="mb-2 text-sm font-medium text-gray-900 ">
                   Email
                 </label>
                 <input
@@ -89,7 +89,7 @@ const ContactAdmin = () => {
                 />
               </div>
               <div>
-                <label className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="mb-2 text-sm font-medium text-gray-900 ">
                   Name
                 </label>
                 <input
@@ -101,7 +101,7 @@ const ContactAdmin = () => {
                 />
               </div>
               <div>
-                <label className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="mb-2 text-sm font-medium text-gray-900 ">
                   Subject
                 </label>
                 <input
@@ -114,7 +114,7 @@ const ContactAdmin = () => {
               </div>
             </div>
             <div>
-              <label className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="mb-2 text-sm font-medium text-gray-900 ">
                 Message
               </label>
               <textarea
