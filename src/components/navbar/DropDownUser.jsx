@@ -4,24 +4,25 @@ import { deleteCookie } from "cookies-next";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
-const DropDownUser = ({ logoutCallBack }) => {
-  const router = useRouter()
+const DropDownUser = ({ logoutCallBack, profile }) => {
+  const router = useRouter();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const path = usePathname()
+  const path = usePathname();
 
-  useEffect(()=>{
-    setDropdownOpen(false)
-  }, [path])
-  
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [path]);
+
   const handleLogout = () => {
     try {
-      deleteCookie('accessToken')
-      deleteCookie('refreshToken')
-      router.push('/')
-      logoutCallBack()
+      deleteCookie("accessToken");
+      deleteCookie("refreshToken");
+      router.push("/");
+      logoutCallBack();
     } catch (error) {
-      console.error('Error during logout:', error)
+      console.error("Error during logout:", error);
     }
   };
 
@@ -33,32 +34,46 @@ const DropDownUser = ({ logoutCallBack }) => {
     <div className="relative">
       <button
         onClick={toggleDropdown}
-        className="px-2 py-2 hover:bg-green-700 bg-green-600 transition text-white rounded-full flex items-center space-x-2"
+        className="transition border-2 border-green-800 overflow-hidden text-white rounded-full flex items-center aspect-square"
         type="button"
       >
-        <User size={24} color="white" />
+        {/* <User size={24} color="white" /> */}
+        <Image
+          width={100}
+          height={100}
+          alt="profile picture"
+          src={profile}
+          className="object-cover h-12 w-12"
+        />
       </button>
       <ul
-        className={`absolute top-14 right-0 w-36 rounded-lg border-none bg-white text-base shadow-lg ${!isDropdownOpen ? 'invisible' : "visible"}`}
+        className={`absolute top-14 right-0 w-36 rounded-lg border-none bg-white text-base shadow-lg ${
+          !isDropdownOpen ? "invisible" : "visible"
+        }`}
       >
         <li>
           <Link
             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
             href="/profile/edit_profile"
             data-te-dropdown-item-ref
-          >Profile</Link>
+          >
+            Profile
+          </Link>
         </li>
         <li>
           <Link
             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
             href="/notification"
             data-te-dropdown-item-ref
-          >Booking History</Link>
+          >
+            Booking History
+          </Link>
         </li>
         <li>
           <button
             onClick={handleLogout}
-            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 text-left">
+            className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 text-left"
+          >
             Logout
           </button>
         </li>

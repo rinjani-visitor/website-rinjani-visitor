@@ -37,7 +37,6 @@ const Navbar = () => {
       setScrolling(window.scrollY);
     };
 
-    // Tambahkan event listener untuk perubahan scroll
     window.addEventListener("scroll", handleScroll);
 
     // Membersihkan event listener saat komponen dilepas
