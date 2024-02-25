@@ -5,6 +5,7 @@ import ContactAdmin from "@/components/home/ContactAdmin";
 import getBaseURL from "@/libs/getBaseURL";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import Link from "next/link";
 
 const fetchData = async () => {
   try {
@@ -59,12 +60,18 @@ const Page = async () => {
             We Provide What You Need in Rinjani
           </p>
           <div className="space-y-2 md:space-y-0 md:space-x-4 font-normal flex flex-col md:flex-row">
-            <button className="py-2 px-4 text-white rounded-md bg-[#32823A] hover:bg-green-700">
+            <Link
+              className="py-2 px-4 text-white rounded-md bg-[#32823A] hover:bg-green-700"
+              href={"#2"}
+            >
               Get Started
-            </button>
-            <button className="py-2 px-4 text-[#32823A] hover:text-white hover:bg-[#32823a] rounded-md border border-[#32823A]">
+            </Link>
+            <Link
+              className="py-2 px-4 text-[#32823A] hover:text-white hover:bg-[#32823a] rounded-md border border-[#32823A]"
+              href={"#5"}
+            >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
         <div className="my-auto flex justify-end relative -order-1 md:order-1">
@@ -87,7 +94,7 @@ const Page = async () => {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 gap-8">
+      <section className="grid md:grid-cols-2 gap-8" id="2">
         <div className="grid grid-cols-2 gap-4 md:pe-28">
           <div className="space-y-8">
             <CardField
@@ -145,13 +152,19 @@ const Page = async () => {
               </p>
             </div>
           </div>
-          <button className="px-4 py-2 rounded-lg text-white bg-rinjaniVisitor-green text-center w-full md:w-auto">
+          <Link
+            className="px-4 py-2 rounded-lg inline-block text-white bg-rinjaniVisitor-green text-center w-full md:w-auto"
+            href={"#3"}
+          >
             Continue to explore
-          </button>
+          </Link>
         </div>
       </section>
 
-      <section className="grid md:grid-cols-2 relative space-y-6 md:space-y-0">
+      <section
+        id="3"
+        className="grid md:grid-cols-2 relative space-y-6 md:space-y-0"
+      >
         <div className="md:space-y-6 space-y-4 text-center md:text-left">
           <h1 className="text-3xl md:text-5xl font-semibold text-[green]">
             About Us
@@ -160,9 +173,12 @@ const Page = async () => {
             Rinjani Visitor is a service to accommodate tourist in enjoying the
             beauty of Rinjani Mount and the culture of Lombok
           </p>
-          <button className="px-4 py-2 rounded-lg text-white bg-green-500">
+          <Link
+            className="px-4 py-2 rounded-lg text-white bg-green-500"
+            href={"https://www.youtube.com/watch?v=ijhs79_A02E"}
+          >
             Watch Our Video
-          </button>
+          </Link>
           <VideoPlayer />
         </div>
         <div className="flex justify-end relative space-y-4 overflow-hidden">
@@ -215,9 +231,12 @@ const Page = async () => {
               and have had many customers give good reviews
             </p>
             <div className="ms-auto w-fit">
-              <button className="px-4 py-2 ms-auto rounded-lg text-white bg-green-500">
+              <Link
+                className="px-4 inline-block py-2 ms-auto rounded-lg text-white bg-green-500"
+                href={"/homestay"}
+              >
                 Home Stay
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -244,7 +263,10 @@ const Page = async () => {
         </Marquee>
       </section>
 
-      <section className="flex flex-col items-center space-y-4 md:space-y-10 py-10">
+      <section
+        className="flex flex-col items-center space-y-4 md:space-y-10 py-10"
+        id="5"
+      >
         <h1 className="text-4xl md:text-5xl text-center md:text-start font-semibold text-green-700">
           What are you waiting for?
         </h1>

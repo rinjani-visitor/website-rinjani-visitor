@@ -74,7 +74,7 @@ const Page = async ({ params }) => {
         <p>Order Date: {data?.createdAt}</p>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="">
+        <Link className="" href={`/packages/${data.productId}`}>
           {/* thumnail */}
           <Image
             src={data?.thumbnail}
@@ -94,7 +94,7 @@ const Page = async ({ params }) => {
               <MapPin size={24} weight="fill" /> <span>{data?.location}</span>
             </div>
           </div>
-        </div>
+        </Link>
         <div className="">
           <div className="mb-4">
             <h1 className="text-lg font-semibold text-rinjaniVisitor-green">
