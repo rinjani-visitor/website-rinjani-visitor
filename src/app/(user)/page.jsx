@@ -174,7 +174,7 @@ const Page = async () => {
             beauty of Rinjani Mount and the culture of Lombok
           </p>
           <Link
-            className="px-4 py-2 rounded-lg text-white bg-green-500"
+            className="px-4 py-2 rounded-lg text-white bg-green-500 inline-block"
             href={"https://www.youtube.com/watch?v=ijhs79_A02E"}
           >
             Watch Our Video
