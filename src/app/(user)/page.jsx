@@ -12,7 +12,7 @@ const fetchData = async () => {
     const req = await fetch(
       "https://rinjani-visitor-web-nvyjfyoxzq-et.a.run.app/api/dashboard",
       {
-        // cache: "force-cache",
+        cache: "no-store",
         method: "GET",
       }
     );
@@ -45,6 +45,8 @@ const Page = async () => {
   const [data, reviews] = await Promise.all([fetchData(), fetchReviews()]);
 
   const sliceReview = reviews.slice(-10);
+
+  console.log(data);
 
   return (
     <div className="container max-w-6xl space-y-10">
