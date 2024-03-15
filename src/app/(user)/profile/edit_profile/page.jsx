@@ -156,9 +156,9 @@ const Page = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="">
       <ToastContainer delay={5000} />
-      <div className="space-y-3">
+      <div className="space-y-3 mb-6">
         <p>My Avatar (max. 2MB)</p>
         <div className="rounded-full aspect-square h-28 bg-white mb-6 overflow-hidden border-2 border-green-700">
           <Image

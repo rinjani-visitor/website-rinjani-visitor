@@ -1,8 +1,8 @@
-import CardPackage from './CardPackage';
+import CardPackage from "./CardPackage";
 
 export default async function CardPackageList({ data }) {
   return (
-    <div className='grid md:grid-cols-1 grid-cols-1 gap-4'>
+    <div className="grid md:grid-cols-1 grid-cols-1 gap-4">
       {data?.length > 0 ? (
         data.map((item) => (
           <CardPackage
@@ -14,11 +14,12 @@ export default async function CardPackageList({ data }) {
             thumbnail={item.thumbnail}
             productId={item.productId}
             location={item.location}
+            {...item}
           />
         ))
       ) : (
         <p>Package Unavailable</p>
       )}
     </div>
-  )
+  );
 }

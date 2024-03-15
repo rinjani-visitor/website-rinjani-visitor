@@ -46,8 +46,6 @@ const Page = async () => {
 
   const sliceReview = reviews.slice(-10);
 
-  console.log(data);
-
   return (
     <div className="container max-w-6xl space-y-10">
       <section className="grid md:grid-cols-2">

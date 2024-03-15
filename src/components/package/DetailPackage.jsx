@@ -9,6 +9,8 @@ import { getCookie, hasCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toast";
 import { showFormattedDate } from "@/libs/formatDate";
+import Available from "./available/Available";
+import Unavailable from "./available/Unavailable";
 
 const DetailPackage = ({ id }) => {
   const [isLoad, setIsLoad] = useState(false);
@@ -87,8 +89,6 @@ const DetailPackage = ({ id }) => {
       totalPersons: `${person}`,
     };
 
-    console.log(body);
-
     try {
       const response = await fetch(getBaseURL("booking"), {
         method: "POST",
@@ -146,6 +146,7 @@ const DetailPackage = ({ id }) => {
           <p className="text-base capitalize max-sm:text-xs text-gray-700 font-">
             Packages/{data.category}/{data.subCategory}
           </p>
+          {data.status ? <Available /> : <Unavailable />}
           <h1 className="font-semibold text-3xl text-gray-700 max-sm:text-xl max-lg:text-2xl ">
             {data.title}
           </h1>
@@ -290,7 +291,9 @@ const DetailPackage = ({ id }) => {
             />
           </div>
           <button
-            disabled={data.status ? isLoad : !data.status}
+            disabled={
+              data.status || data.category === "event" ? isLoad : !data.status
+            }
             type="submit"
             className="font-medium text-base w-full bg-green-700 hover:bg-green-600 h-10 transition rounded-lg text-white disabled:bg-slate-400"
           >
