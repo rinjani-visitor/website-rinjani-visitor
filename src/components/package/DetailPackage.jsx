@@ -380,9 +380,9 @@ const DetailPackage = ({ id }) => {
                 Facility
               </h1>
               <ul className="list-none list-inside">
-                {data.facilities > 0 ? (
-                  data.facilities.map((facility, index) => (
-                    <li key={index}>{facility}</li>
+                {data.facilities?.length > 0 ? (
+                  data.facilities.map((facilities, index) => (
+                    <li key={index}>{facilities}</li>
                   ))
                 ) : (
                   <li>-</li>

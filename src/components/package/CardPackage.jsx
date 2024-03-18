@@ -29,7 +29,7 @@ const CardPackage = ({
       </div>
 
       <div className="w-full p-4 space-y-4">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-col md:flex-row">
           <h3 className="text-xl font-semibold line-clamp-1">{name}</h3>
           {startDate ? (
             <div className="flex gap-2">
