@@ -139,7 +139,7 @@ const Page = async () => {
             </div>
             <div className="space-y-2">
               <h3 className="md:text-8xl text-5xl font-semibold text-[#2F4B32]">
-                {data.averageRating}
+                {data.averageRating.toFixed(1)}
               </h3>
               <p className="md:text-base text-sm font-normal">Avarage Rating</p>
             </div>

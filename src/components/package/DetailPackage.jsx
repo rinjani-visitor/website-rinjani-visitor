@@ -353,7 +353,7 @@ const DetailPackage = ({ id }) => {
                   Start Date
                 </h1>
                 <p className=" max-sm:text-sm text-slate-900">
-                  {showFormattedDate(data.startDate)}
+                  {showFormattedDate(data?.startDate)}
                 </p>
               </div>
               <div className="">
@@ -361,7 +361,7 @@ const DetailPackage = ({ id }) => {
                   End Date
                 </h1>
                 <p className=" max-sm:text-sm text-slate-900">
-                  {showFormattedDate(data.endDate)}
+                  {showFormattedDate(data?.endDate)}
                 </p>
               </div>
             </>

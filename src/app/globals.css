@@ -16,25 +16,24 @@ main {
 
 @layer components {
   .active_navigation_bar {
-    @apply font-bold
+    @apply font-bold;
   }
-
 }
 
 #image-login {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/uploadfile-92b82.appspot.com/o/tenun.webp?alt=media&token=4c89085a-5af2-4714-b8e7-209c3a8073b6');
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/uploadfile-92b82.appspot.com/o/tenun.webp?alt=media&token=4c89085a-5af2-4714-b8e7-209c3a8073b6");
 }
 
 #image-register {
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/uploadfile-92b82.appspot.com/o/airterjun.webp?alt=media&token=017cdc3f-5d6e-4010-825f-4669e79125fe');
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/uploadfile-92b82.appspot.com/o/airterjun.webp?alt=media&token=017cdc3f-5d6e-4010-825f-4669e79125fe");
 }
 
 .custom-loader {
   /* width: 40px; */
   /* height: 40px; */
   border-radius: 50%;
-  background:
-    radial-gradient(farthest-side, white 94%, #0000) top/8px 8px no-repeat,
+  background: radial-gradient(farthest-side, white 94%, #0000) top/8px 8px
+      no-repeat,
     conic-gradient(#0000 30%, white);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: s3 0.5s infinite linear;
@@ -42,7 +41,7 @@ main {
 
 @keyframes s3 {
   100% {
-    transform: rotate(1turn)
+    transform: rotate(1turn);
   }
 }
 
@@ -105,12 +104,12 @@ main {
   justify-content: center;
   border-radius: 0.5rem;
   border: none;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   color: rgba(51, 65, 85, 1);
-  transition: all .15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
-.radio-inputs .radio input:checked+.name {
+.radio-inputs .radio input:checked + .name {
   background-color: #fff;
   font-weight: 600;
 }
@@ -121,9 +120,34 @@ input::-webkit-inner-spin-button {
 }
 
 .swal-button {
-  background-color: #32823A !important;
+  background-color: #32823a !important;
 }
 
 .swal-button:hover {
   background-color: #57a05e !important;
+}
+
+.custom-loader2 {
+  width: 50px;
+  height: 24px;
+  background: radial-gradient(circle closest-side, #766df4 90%, #0000) 0% 50%,
+    radial-gradient(circle closest-side, #766df4 90%, #0000) 50% 50%,
+    radial-gradient(circle closest-side, #766df4 90%, #0000) 100% 50%;
+  background-size: calc(100% / 3) 12px;
+  background-repeat: no-repeat;
+  animation: d3 0.5s infinite linear;
+}
+@keyframes d3 {
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
 }
