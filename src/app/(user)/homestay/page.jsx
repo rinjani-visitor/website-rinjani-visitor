@@ -3,6 +3,7 @@
 import HeaderPackage from "@/components/HeaderPackage";
 import CardPackage from "@/components/package/CardPackage";
 import Filter from "@/components/package/Filter";
+import Skeleton from "@/components/Skeleton";
 import getBaseURL from "@/libs/getBaseURL";
 import { useEffect, useState } from "react";
 
@@ -48,11 +49,9 @@ const Page = ({ searchParams }) => {
       <div className="xl:flex xl:space-x-6 max-xl:space-y-6">
         <Filter />
         <div className="xl:flex-1">
-          {/* Conditionally render loading indicator */}
           {loading ? (
-            <div className="shadow-md rounded-xl bg-gray-200 animate-pulse w-full h-40"></div>
+            <Skeleton />
           ) : (
-            // <p>Loading...</p>
             <div className="grid md:grid-cols-1 grid-cols-1 gap-4">
               {data?.length > 0 ? (
                 data.map((item) => (
