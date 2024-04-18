@@ -52,10 +52,10 @@ const ForgotPassword = () => {
         setErrorMessage(data.errors)
       }
 
-      setIsLoad(false)
     } catch (error) {
       toast.error(error.message);
-      console.log("Error:", error);
+    } finally {
+      setIsLoad(false)
     }
   };
 

@@ -12,6 +12,7 @@ import { showFormattedDate } from "@/libs/formatDate";
 import Available from "./available/Available";
 import Unavailable from "./available/Unavailable";
 
+
 const DetailPackage = ({ id }) => {
   const [isLoad, setIsLoad] = useState(false);
   const [person, setPerson] = useState(0);
@@ -88,6 +89,8 @@ const DetailPackage = ({ id }) => {
       offeringPrice: offeringPrice,
       totalPersons: `${person}`,
     };
+
+    
 
     try {
       const response = await fetch(getBaseURL("booking"), {
