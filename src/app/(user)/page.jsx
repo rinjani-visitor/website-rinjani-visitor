@@ -10,7 +10,7 @@ import Link from "next/link";
 const fetchData = async () => {
   try {
     const req = await fetch(
-      "https://rinjani-visitor-web-nvyjfyoxzq-et.a.run.app/api/dashboard",
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/dashboard`,
       {
         cache: "no-store",
         method: "GET",
@@ -26,13 +26,10 @@ const fetchData = async () => {
 
 const fetchReviews = async () => {
   try {
-    const req = await fetch(
-      "https://rinjani-visitor-web-nvyjfyoxzq-et.a.run.app/api/reviews",
-      {
-        // cache: "force-cache",
-        method: "GET",
-      },
-    );
+    const req = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/reviews`, {
+      // cache: "force-cache",
+      method: "GET",
+    });
 
     const res = await req.json();
     return res.data;
@@ -139,7 +136,7 @@ const Page = async () => {
             </div>
             <div className="space-y-2">
               <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl">
-                {data?.averageRating.toFixed(1)}
+                {data.averageRating ? data?.averageRating.toFixed(1) : 0}
               </h3>
               <p className="text-sm font-normal md:text-base">Avarage Rating</p>
             </div>

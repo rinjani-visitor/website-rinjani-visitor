@@ -12,10 +12,9 @@ import { showFormattedDate } from "@/libs/formatDate";
 import Available from "./available/Available";
 import Unavailable from "./available/Unavailable";
 
-
 const DetailPackage = ({ id }) => {
   const [isLoad, setIsLoad] = useState(false);
-  const [person, setPerson] = useState(0);
+  const [person, setPerson] = useState(1);
   const [data, setData] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
   const [date, setDate] = useState(null);
@@ -57,7 +56,7 @@ const DetailPackage = ({ id }) => {
 
   const handlerReducePerson = (event) => {
     event.preventDefault();
-    person != 0 ? setPerson(person - 1) : setPerson(person);
+    person != 1 ? setPerson(person - 1) : setPerson(person);
   };
 
   const handlerDate = (event) => {
@@ -89,8 +88,6 @@ const DetailPackage = ({ id }) => {
       offeringPrice: offeringPrice,
       totalPersons: `${person}`,
     };
-
-    
 
     try {
       const response = await fetch(getBaseURL("booking"), {
@@ -280,15 +277,18 @@ const DetailPackage = ({ id }) => {
             </h1>
             <input
               required
-              min={
-                person > 1 ? data.lowestPrice * 0.8 * person : data.lowestPrice
-              }
+              // min={
+              //   person > 1 ? data.lowestPrice * 0.8 * person : data.lowestPrice
+              // }
+              min={Math.ceil(
+                person > 1 ? data.lowestPrice * 0.8 * person : data.lowestPrice,
+              )}
               type="number"
               className="w-full rounded-md border border-green-700 bg-transparent bg-white px-3 py-2 focus:outline-none"
               placeholder={`Enter a offer price minimum $${
                 person === 1
                   ? data.lowestPrice
-                  : data.lowestPrice * person * 0.8
+                  : Math.ceil(data.lowestPrice * person * 0.8)
               }`}
               onChange={handlerOfferingPrice}
             />
