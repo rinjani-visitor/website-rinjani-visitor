@@ -56,9 +56,9 @@ const Page = async ({ params }) => {
   const product = await fetchDetailProduct(data?.productId);
 
   return (
-    <div className="max-w-4xl mx-auto p-4 space-y-4">
-      <div className="flex space-x-6 items-center">
-        <h1 className="font-semibold text-2xl text-rinjaniVisitor-green">
+    <div className="mx-auto max-w-4xl space-y-4 p-4">
+      <div className="flex items-center space-x-6">
+        <h1 className="text-2xl font-semibold text-rinjaniVisitor-green">
           Booking Details
         </h1>
         <BookingStatus status={data?.bookingStatus} />
@@ -69,11 +69,21 @@ const Page = async ({ params }) => {
           <p>Admin Message : {data.adminMessage}</p>
         </>
       ) : null}
-      <div className="text-sm text-slate-600 space-y-1">
+      <div className="space-y-2 text-sm text-slate-600">
         <p>Booking Id: {data?.bookingId}</p>
         <p>Order Date: {data?.createdAt}</p>
+        {["Payment Reviewing", " Payment Failed", "Success"].includes(
+          data?.bookingStatus,
+        ) ? (
+          <Link
+            href={`/booking/payments/${id}`}
+            className="mt-4 inline-block italic text-rinjaniVisitor-green underline"
+          >
+            See Payment Details
+          </Link>
+        ) : null}
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <Link className="" href={`/packages/${data.productId}`}>
           {/* thumnail */}
           <Image
@@ -81,12 +91,12 @@ const Page = async ({ params }) => {
             height={500}
             width={500}
             alt="thumbnail product"
-            className="rounded-2xl h-[500px] object-cover"
+            className="h-[500px] rounded-2xl object-cover"
           />
-          <h1 className="font-semibold mt-2 text-2xl text-gray-700 max-sm:text-lg max-lg:text-xl ">
+          <h1 className="mt-2 text-2xl font-semibold text-gray-700 max-lg:text-xl max-sm:text-lg ">
             {data?.title}
           </h1>
-          <div className="flex space-x-4 text-gray-700 font-normal ">
+          <div className="flex space-x-4 font-normal text-gray-700 ">
             <div className="flex items-center space-x-2">
               <Star size={24} weight="fill" /> <span>{data?.rating}</span>
             </div>
@@ -112,7 +122,7 @@ const Page = async ({ params }) => {
             <h1 className="text-lg font-semibold text-rinjaniVisitor-green">
               Add On
             </h1>
-            <p>{data?.addOns}</p>
+            <p>{data?.addOns ? data.addOns : "-"}</p>
           </div>
           <div className="mb-4">
             <h1 className="text-lg font-semibold text-rinjaniVisitor-green">
@@ -120,13 +130,16 @@ const Page = async ({ params }) => {
             </h1>
             <p>{data?.totalPersons} Person</p>
           </div>
-          {data?.bookingStatus === "Waiting for Payment" ? (
+          {data?.bookingStatus === "Waiting for Payment" ||
+          data?.bookingStatus === "Payment Failed" ? (
             // <button>Continue</button>
             <Link
               href={`/payment/${data?.bookingId}`}
-              className="block bg-rinjaniVisitor-green text-center text-white py-2 rounded-md"
+              className="block rounded-md bg-rinjaniVisitor-green py-2 text-center text-white"
             >
-              Continue Payment
+              {data?.bookingStatus == "Waiting for Payment"
+                ? "Continue Payment"
+                : "Payment Again"}
             </Link>
           ) : null}
           {data?.bookingStatus === "Declined" ? (
