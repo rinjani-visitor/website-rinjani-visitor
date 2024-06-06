@@ -1,3 +1,5 @@
+"use client";
+
 import CardReviewHome from "@/components/CardReviewHome";
 import VideoPlayer from "@/components/VideoPlayer";
 import CardField from "@/components/home/CardField";
@@ -6,6 +8,7 @@ import getBaseURL from "@/libs/getBaseURL";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const fetchData = async () => {
   try {
@@ -38,8 +41,29 @@ const fetchReviews = async () => {
   }
 };
 
-const Page = async () => {
-  const [data, reviews] = await Promise.all([fetchData(), fetchReviews()]);
+const Page = () => {
+  const [data, setData] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        const [fetchedData, fetchedReviews] = await Promise.all([
+          fetchData(),
+          fetchReviews(),
+        ]);
+        setData(fetchedData);
+        setReviews(fetchedReviews);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllData();
+  }, []);
 
   const sliceReview = reviews?.slice(-10);
 
@@ -125,30 +149,37 @@ const Page = async () => {
           <p className="text-lg font-normal md:text-xl">
             Committed to providing services <br /> with an exeptional experience
           </p>
-          <div className="grid grid-cols-3 divide-x-2 divide-slate-300 text-center">
-            <div className="space-y-2">
-              <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl ">
-                {data?.userCount}
-              </h3>
-              <p className="text-sm font-normal md:text-base">
-                Registered User
-              </p>
+          {loading ? (
+            <div className="h-20 w-full animate-pulse bg-gray-200 rounded-xl"></div>
+          ) : (
+            // <p>loading</p>
+            <div className="grid grid-cols-3 divide-x-2 divide-slate-300 text-center">
+              <div className="space-y-2">
+                <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl ">
+                  {data?.userCount}
+                </h3>
+                <p className="text-sm font-normal md:text-base">
+                  Registered User
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl">
+                  {data.averageRating ? data?.averageRating.toFixed(1) : 0}
+                </h3>
+                <p className="text-sm font-normal md:text-base">
+                  Avarage Rating
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl">
+                  {data?.productCount}
+                </h3>
+                <p className="text-sm font-normal md:text-base">
+                  Package Available
+                </p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl">
-                {data.averageRating ? data?.averageRating.toFixed(1) : 0}
-              </h3>
-              <p className="text-sm font-normal md:text-base">Avarage Rating</p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-5xl font-semibold text-[#2F4B32] md:text-8xl">
-                {data?.productCount}
-              </h3>
-              <p className="text-sm font-normal md:text-base">
-                Package Available
-              </p>
-            </div>
-          </div>
+          )}
           <Link
             className="inline-block w-full rounded-lg bg-rinjaniVisitor-green px-4 py-2 text-center text-white md:w-auto"
             href={"#3"}
