@@ -25,6 +25,9 @@ const DetailPackage = ({ id }) => {
 
   const [offeringPrice, setOfferingPrice] = useState(null);
   const [like, setLike] = useState(undefined);
+
+  const [addOnsPrice, setAddOnsPrice] = useState(0);
+
   const router = useRouter();
   const cookie = hasCookie("accessToken");
 
@@ -47,6 +50,7 @@ const DetailPackage = ({ id }) => {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlerAddPerson = (event) => {
@@ -238,10 +242,12 @@ const DetailPackage = ({ id }) => {
                 {data.addOns?.map((item, index) => (
                   <CheckboxButtonAddOn
                     key={index}
-                    id={item}
-                    label={item}
+                    id={item.addOnsName}
+                    label={item.addOnsName}
+                    value={item.price}
                     selectedValues={selectedValues}
                     setSelectedValues={setSelectedValues}
+                    setAddOnsPrice={setAddOnsPrice}
                   />
                 ))}
               </div>
@@ -277,18 +283,17 @@ const DetailPackage = ({ id }) => {
             </h1>
             <input
               required
-              // min={
-              //   person > 1 ? data.lowestPrice * 0.8 * person : data.lowestPrice
-              // }
               min={Math.ceil(
-                person > 1 ? data.lowestPrice * 0.8 * person : data.lowestPrice,
+                person > 1
+                  ? data.lowestPrice * 0.8 * person + addOnsPrice
+                  : data.lowestPrice + addOnsPrice,
               )}
               type="number"
               className="w-full rounded-md border border-green-700 bg-transparent bg-white px-3 py-2 focus:outline-none"
               placeholder={`Enter a offer price minimum $${
                 person === 1
-                  ? data.lowestPrice
-                  : Math.ceil(data.lowestPrice * person * 0.8)
+                  ? data.lowestPrice + addOnsPrice
+                  : Math.ceil(data.lowestPrice * person * 0.8) + addOnsPrice
               }`}
               onChange={handlerOfferingPrice}
             />

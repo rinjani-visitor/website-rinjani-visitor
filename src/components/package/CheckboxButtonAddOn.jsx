@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const CheckboxButtonAddOn = ({ id, label, selectedValues, setSelectedValues }) => {
+const CheckboxButtonAddOn = ({
+  id,
+  label,
+  value,
+  selectedValues,
+  setSelectedValues,
+  setAddOnsPrice,
+}) => {
   const isChecked = selectedValues.includes(id);
 
   const handleCheckboxChange = () => {
     if (isChecked) {
-      setSelectedValues((prevValues) => prevValues.filter((value) => value !== id));
+      setSelectedValues((prevValues) =>
+        prevValues.filter((value) => value !== id),
+      );
+      setAddOnsPrice((prevValue) => prevValue - value);
     } else {
       setSelectedValues((prevValues) => [...prevValues, id]);
+      setAddOnsPrice((prevValue) => prevValue + value);
     }
   };
 
@@ -20,7 +31,11 @@ const CheckboxButtonAddOn = ({ id, label, selectedValues, setSelectedValues }) =
         onChange={handleCheckboxChange}
         hidden
       />
-      <span className={`select-none border-[3px] rounded mr-4 mb-2 w-[160px] text-center py-2 ${isChecked ? 'text-green-700 font-semibold border-green-700' : 'text-slate-400'}`}>{label}</span>
+      <span
+        className={`mb-2 mr-4 px-2 select-none rounded border-[3px] py-2 text-center ${isChecked ? "border-green-700 font-semibold text-green-700" : "text-slate-400"}`}
+      >
+        {label} (${value})
+      </span>
     </label>
   );
 };
